@@ -1,5 +1,5 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet, View } from 'react-native';
+import { Image } from 'expo-image'; 
+import { StyleSheet } from 'react-native';
 import ParallaxScrollView from '@/components/parallax-scroll-view';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
@@ -9,6 +9,7 @@ export default function HomeScreen() {
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#0000000', dark: '#000000' }}
+      style={{ backgroundColor: '#000' }} // fundo preto geral
       headerImage={
         <Image
           source={require('@/assets/images/fundopreto2.png')} 
@@ -80,11 +81,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 8,
-    
+    backgroundColor: '#000',  // fundo preto aqui
   },
   stepContainer: {
     gap: 8,
     marginBottom: 8,
+    backgroundColor: '#000',  // fundo preto aqui também
   },
   headerImage: {
     height: 178,
