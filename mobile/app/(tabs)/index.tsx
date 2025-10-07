@@ -1,99 +1,62 @@
-import { Image } from 'expo-image'; 
-import { StyleSheet } from 'react-native';
-import ParallaxScrollView from '@/components/parallax-scroll-view';
+import { Image } from 'expo-image';
+import { StyleSheet, View } from 'react-native';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
-import { Link } from 'expo-router';
 
 export default function HomeScreen() {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#0000000', dark: '#000000' }}
-      style={{ backgroundColor: '#000' }} // fundo preto geral
-      headerImage={
-        <Image
-          source={require('@/assets/images/fundopreto2.png')} 
-          style={styles.headerImage}
-        />
-      }
-    >
+    <View style={styles.container}>
+      {/* Título centralizado */}
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-         
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <Link href="/modal">
-          <Link.Trigger>
-            <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-          </Link.Trigger>
-          <Link.Preview />
-          <Link.Menu>
-            <Link.MenuAction title="Action" icon="cube" onPress={() => alert('Action pressed')} />
-            <Link.MenuAction
-              title="Share"
-              icon="square.and.arrow.up"
-              onPress={() => alert('Share pressed')}
-            />
-            <Link.Menu title="More" icon="ellipsis">
-              <Link.MenuAction
-                title="Delete"
-                icon="trash"
-                destructive
-                onPress={() => alert('Delete pressed')}
-              />
-            </Link.Menu>
-          </Link.Menu>
-        </Link>
-
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
+        <ThemedText type="title">Arte na Pele, Estilo na Alma.</ThemedText>
       </ThemedView>
 
+      {/* Caixas de texto separadas */}
+      <ThemedView style={styles.boxContainer}>
+        <ThemedView style={styles.box}>
+          <ThemedText type="subtitle">+350 prêmios ao longo dos anos</ThemedText>
+        </ThemedView>
+        <ThemedView style={styles.box}>
+          <ThemedText type="subtitle">+100 profissionais marcaram nossa história</ThemedText>
+        </ThemedView>
+        <ThemedView style={styles.box}>
+          <ThemedText type="subtitle">+1000 Clientes satisfeitos</ThemedText>
+        </ThemedView>
+      </ThemedView>
+
+      {/* Imagem no canto inferior direito */}
       <Image
         source={require('@/assets/images/pg1.png')} 
         style={styles.bottomRightImage}
       />
-    </ParallaxScrollView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',  // Centraliza verticalmente
+    alignItems: 'center',      // Centraliza horizontalmente
+    backgroundColor: '#000',  // Fundo escuro para destacar o conteúdo
+    padding: 20,
+  },
   titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-    backgroundColor: '#000',  // fundo preto aqui
+    marginBottom: 20,  // Espaço abaixo do título
+    alignItems: 'center',  // Centraliza o título
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-    backgroundColor: '#000',  // fundo preto aqui também
+  boxContainer: {
+    marginBottom: 20,  // Espaço entre as caixas de texto e a imagem
+    gap: 10,  // Espaço entre as caixas
   },
-  headerImage: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+  box: {
+    backgroundColor: '#FF0090',  // Fundo semitransparente
+    borderColor: '#FF0090',  // Borda rosa
+    borderWidth: 2,  // Largura da borda
+    borderRadius: 10,  // Bordas arredondadas
+    padding: 15,
+    marginBottom: 10,  // Espaço entre as caixas
+    alignItems: 'center',  // Centraliza o texto dentro de cada caixa
   },
   bottomRightImage: {
     position: 'absolute',
