@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 16,
     paddingBottom: 32,
-    backgroundColor: '#F5F5F5', // Cor de fundo para a tela
+    backgroundColor: '#F5F5F5', 
   },
   titleContainer: {
     alignItems: 'center',
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 32,
-    color: '#FF3366', // Cor vibrante para o título
+    color: '#FF3366', 
     fontWeight: 'bold',
   },
   stepContainer: {
@@ -107,18 +107,18 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     fontSize: 20,
-    color: '#333333', // Cor escura para subtítulos
+    color: '#333333', 
     fontWeight: 'bold',
   },
   description: {
     fontSize: 16,
-    color: '#666666', // Cor de texto para descrições
+    color: '#666666', 
   },
   piercingsSection: {
     marginBottom: 24,
     padding: 10,
     borderRadius: 8,
-    backgroundColor: '#FFFFFF', // Cor de fundo das seções
+    backgroundColor: '#FFFFFF', 
     shadowColor: '#000000',
     shadowOpacity: 0.1,
     shadowRadius: 4,
@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontSize: 18,
-    color: '#FF6600', // Cor vibrante para os títulos das seções
+    color: '#FF6600', 
     fontWeight: 'bold',
     marginBottom: 10,
   },
@@ -140,11 +140,11 @@ const styles = StyleSheet.create({
     height: 100,
     borderRadius: 8,
     borderWidth: 2,
-    borderColor: '#FF3366', // Cor da borda das imagens
+    borderColor: '#FF3366', 
   },
   linkText: {
     fontSize: 16,
-    color: '#1E90FF', // Cor azul para links
+    color: '#1E90FF', 
     fontWeight: 'bold',
   },
 });
