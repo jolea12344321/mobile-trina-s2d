@@ -1,13 +1,20 @@
 import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import { Platform, StyleSheet, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 
 import { HelloWave } from '@/components/hello-wave';
 import ParallaxScrollView from '@/components/parallax-scroll-view';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { Link } from 'expo-router';
+import { useState } from 'react';
 
 export default function HomeScreen() {
+  const [nome, setNome] = useState('');
+  const [telefone, setTelefone] = useState('');
+  const [email, setEmail] = useState('');
+  const [autorizo, setAutorizo] = useState(false);
+  const [descricao, setDescricao] = useState('');
+
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#000000', dark: '#000000' }}
@@ -33,7 +40,6 @@ export default function HomeScreen() {
           <ThemedText style={styles.iconText}>Ideia</ThemedText>
         </ThemedView>
 
-        
         <ThemedView style={styles.iconWrapper}>
           <ThemedView style={styles.iconCircle}>
             <Image source={require('@/assets/images/desenho.png')} style={styles.iconImg} />
@@ -41,14 +47,12 @@ export default function HomeScreen() {
           <ThemedText style={styles.iconText}>Desenho</ThemedText>
         </ThemedView>
 
-       
         <ThemedView style={styles.iconWrapper}>
           <ThemedView style={styles.iconCircle}>
             <Image source={require('@/assets/images/orçamento.png')} style={styles.iconImg} />
           </ThemedView>
           <ThemedText style={styles.iconText}>Orçamento</ThemedText>
         </ThemedView>
-
 
         <ThemedView style={styles.iconWrapper}>
           <ThemedView style={styles.iconCircle}>
@@ -57,7 +61,64 @@ export default function HomeScreen() {
           <ThemedText style={styles.iconText}>Tattoo</ThemedText>
         </ThemedView>
       </ThemedView>
-    
+
+      {/* Formulário Adicionado */}
+      <ThemedView style={styles.formContainer}>
+        <ThemedText style={styles.label}>Nome</ThemedText>
+        <TextInput
+          placeholder="Nome"
+          placeholderTextColor="#FF0090"
+          style={styles.input}
+          value={nome}
+          onChangeText={setNome}
+        />
+
+        <ThemedText style={styles.label}>Telefone</ThemedText>
+        <TextInput
+          placeholder="Telefone"
+          placeholderTextColor="#FF0090"
+          style={styles.input}
+          value={telefone}
+          onChangeText={setTelefone}
+          keyboardType="phone-pad"
+        />
+
+        <ThemedText style={styles.label}>Email</ThemedText>
+        <TextInput
+          placeholder="Email"
+          placeholderTextColor="#FF0090"
+          style={styles.input}
+          value={email}
+          onChangeText={setEmail}
+          keyboardType="email-address"
+          autoCapitalize="none"
+        />
+
+        <ThemedText style={styles.label}>Política de Privacidade</ThemedText>
+        <TouchableOpacity
+          style={styles.checkbox}
+          onPress={() => setAutorizo(!autorizo)}
+        >
+          <ThemedText style={{ color: autorizo ? '#FFF' : '#FF0090' }}>
+            {autorizo ? '✔ ' : ''}Autorizo o registro dos meus dados para contato
+          </ThemedText>
+        </TouchableOpacity>
+
+        <ThemedText style={styles.label}>Nos explique sua ideia</ThemedText>
+        <TextInput
+          placeholder="Use esse campo para descrever sua ideia e abaixo nos enviar seus exemplos"
+          placeholderTextColor="#FF0090"
+          style={[styles.input, { height: 80 }]}
+          value={descricao}
+          onChangeText={setDescricao}
+          multiline
+          textAlignVertical="top"
+        />
+
+        <TouchableOpacity style={styles.submitButton} onPress={() => alert('Ideia enviada!')}>
+          <ThemedText style={styles.submitButtonText}>ENVIAR SUA IDEIA</ThemedText>
+        </TouchableOpacity>
+      </ThemedView>
 
       <ThemedView style={styles.stepContainer}>
         <ThemedText type="subtitle">Step 1: Try it</ThemedText>
@@ -126,14 +187,13 @@ const styles = StyleSheet.create({
     position: 'absolute',
     tintColor: '#FF0090',
   },
-  
   iconsRow: {
     flexDirection: 'row',
     justifyContent: 'space-around',
     marginVertical: 20,
   },
   iconWrapper: {
-    alignItems: 'center', 
+    alignItems: 'center',
   },
   iconCircle: {
     backgroundColor: '#FF0090',
@@ -142,17 +202,50 @@ const styles = StyleSheet.create({
     height: 80,
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 6, 
+    marginBottom: 6,
   },
   iconImg: {
     width: 40,
     height: 40,
-    tintColor: '#FFF', 
+    tintColor: '#FFF',
   },
   iconText: {
     color: '#ffffffff',
     fontSize: 12,
     fontWeight: '500',
     textAlign: 'center',
+  },
+  formContainer: {
+    marginHorizontal: 20,
+    marginVertical: 30,
+  },
+  label: {
+    fontWeight: 'bold',
+    color: '#FF0090',
+    marginBottom: 4,
+  },
+  input: {
+    backgroundColor: '#FF0090',
+    color: '#fff',
+    borderRadius: 10,
+    paddingHorizontal: 12,
+    paddingVertical: 10,
+    marginBottom: 16,
+  },
+  checkbox: {
+    backgroundColor: '#FF0090',
+    borderRadius: 10,
+    padding: 12,
+    marginBottom: 16,
+  },
+  submitButton: {
+    backgroundColor: '#FF0090',
+    borderRadius: 10,
+    paddingVertical: 14,
+    alignItems: 'center',
+  },
+  submitButtonText: {
+    color: '#fff',
+    fontWeight: 'bold',
   },
 });
