@@ -1,150 +1,119 @@
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
+import React, { useEffect, useState } from 'react';
+import { ScrollView, View, Text, Image, StyleSheet } from 'react-native';
 import { Link } from 'expo-router';
-import { useEffect, useState } from 'react';
-import { Image, ScrollView, StyleSheet, View } from 'react-native';
+
+// Importar o JSON local
+import tattoosData from './.vscode/tattoos.json';  // Ajuste o caminho conforme necessário
 
 export default function HomeScreen() {
-  const [tattooData, setTattooData] = useState({
-    colored: [],
-    realistic: [],
-    minimalist: []
-  });
+  const [tattooData, setTattooData] = useState<{ [key: string]: string[] }>({});
+  const [loading, setLoading] = useState(false);  // Para mostrar o status de carregamento
 
-  // Função para buscar os dados da API
   useEffect(() => {
-    async function fetchTattooData() {
-      try {
-        // Aqui você deve colocar a URL da sua API
-        const response = await fetch('https://api.exemplo.com/tatuagens');
-        const data = await response.json();
-
-        // Supondo que a resposta tenha os dados para cada categoria de tatuagem
-        setTattooData({
-          colored: data.colored,
-          realistic: data.realistic,
-          minimalist: data.minimalist
-        });
-      } catch (error) {
-        console.error('Erro ao buscar dados:', error);
-      }
-    }
-
-    fetchTattooData();
+    // Simula o carregamento dos dados
+    setLoading(true);
+    setTattooData(tattoosData);  // Carrega os dados do arquivo local
+    setLoading(false);  // Dados carregados
   }, []);
+
+  // Se os dados estiverem carregando, mostra uma mensagem de carregamento
+  if (loading) {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.loadingText}>Carregando...</Text>
+      </View>
+    );
+  }
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText style={styles.title}>Trina's Studio</ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText style={styles.subtitle}>Tatuagens</ThemedText>
-        <ThemedText style={styles.description}>
-          Nossos profissionais são altamente qualificados, cuidam do seu bem-estar durante a sua seção, e cuidam para que você consiga ter o efeito desejado.
-        </ThemedText>
-      </ThemedView>
+      {/* Cabeçalho */}
+      <View style={styles.header}>
+        <Text style={styles.titleLogo}>Trina’s{'\n'}Studio</Text>
+      </View>
 
-      {/* Seções de tatuagens */}
-      <ThemedView style={styles.piercingsSection}>
-        <ThemedText style={styles.sectionTitle}>Tatuagens Coloridas</ThemedText>
-        <View style={styles.imageRow}>
-          {tattooData.colored.map((imageUrl, index) => (
-            <Image key={index} source={{ uri: imageUrl }} style={styles.image} />
-          ))}
+      {/* Renderização das categorias de tatuagens */}
+      {Object.keys(tattooData).map((category) => (
+        <View style={styles.section} key={category}>
+          <Text style={styles.sectionTitle}>Tatuagens {category}</Text>
+          <Text style={styles.sectionSubtitle}>Feitas por artistas</Text>
+          <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+            {tattooData[category].map((url, index) => (
+              <Image key={index} source={{ uri: url }} style={styles.image} />
+            ))}
+          </ScrollView>
         </View>
-      </ThemedView>
+      ))}
 
-      <ThemedView style={styles.piercingsSection}>
-        <ThemedText style={styles.sectionTitle}>Tatuagens Realistas</ThemedText>
-        <View style={styles.imageRow}>
-          {tattooData.realistic.map((imageUrl, index) => (
-            <Image key={index} source={{ uri: imageUrl }} style={styles.image} />
-          ))}
-        </View>
-      </ThemedView>
-
-      <ThemedView style={styles.piercingsSection}>
-        <ThemedText style={styles.sectionTitle}>Tatuagens Minimalistas</ThemedText>
-        <View style={styles.imageRow}>
-          {tattooData.minimalist.map((imageUrl, index) => (
-            <Image key={index} source={{ uri: imageUrl }} style={styles.image} />
-          ))}
-        </View>
-      </ThemedView>
-
-      {/* Link para outras seções */}
-      <ThemedView style={styles.stepContainer}>
+      {/* Link "Explore Mais" */}
+      <View style={styles.stepContainer}>
         <Link href="/modal">
-          <Link.Trigger>
-            <ThemedText style={styles.linkText}>Explore Mais</ThemedText>
-          </Link.Trigger>
+          <Text style={styles.linkText}>Explore Mais</Text>
         </Link>
-      </ThemedView>
+      </View>
     </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 16,
-    paddingBottom: 32,
-    backgroundColor: '#F5F5F5', // Cor de fundo para a tela
+    backgroundColor: '#000',
+    paddingBottom: 40,
+    paddingTop: 20,
   },
-  titleContainer: {
+  header: {
     alignItems: 'center',
-    marginTop: 16,
-    marginBottom: 16,
+    marginBottom: 20,
   },
-  title: {
-    fontSize: 32,
-    color: '#FF3366', // Cor vibrante para o título
+  titleLogo: {
+    color: '#ff0080',
+    fontSize: 28,
     fontWeight: 'bold',
+    fontFamily: 'serif',
+    textAlign: 'center',
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 16,
-  },
-  subtitle: {
-    fontSize: 20,
-    color: '#333333', // Cor escura para subtítulos
-    fontWeight: 'bold',
-  },
-  description: {
-    fontSize: 16,
-    color: '#666666', // Cor de texto para descrições
-  },
-  piercingsSection: {
-    marginBottom: 24,
-    padding: 10,
-    borderRadius: 8,
-    backgroundColor: '#FFFFFF', // Cor de fundo das seções
-    shadowColor: '#000000',
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    shadowOffset: { width: 0, height: 2 },
+  section: {
+    paddingHorizontal: 16,
+    paddingVertical: 20,
+    backgroundColor: '#000',
   },
   sectionTitle: {
-    fontSize: 18,
-    color: '#FF6600', // Cor vibrante para os títulos das seções
-    fontWeight: 'bold',
-    marginBottom: 10,
+    color: '#fff',
+    fontSize: 20,
+    fontFamily: 'serif',
+    textTransform: 'lowercase',
+    marginBottom: 5,
   },
-  imageRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    gap: 8,
+  sectionSubtitle: {
+    color: '#999',
+    fontSize: 13,
+    marginBottom: 10,
+    fontStyle: 'italic',
   },
   image: {
-    width: 100,
-    height: 100,
+    width: 150,
+    height: 180,
     borderRadius: 8,
-    borderWidth: 2,
-    borderColor: '#FF3366', // Cor da borda das imagens
+    marginRight: 12,
+    backgroundColor: '#222',
+  },
+  stepContainer: {
+    paddingHorizontal: 16,
+    paddingVertical: 20,
+    alignItems: 'center',
+    backgroundColor: '#000',
   },
   linkText: {
     fontSize: 16,
-    color: '#1E90FF', // Cor azul para links
+    color: '#ff0080',
     fontWeight: 'bold',
+    textAlign: 'center',
+    marginTop: 20,
+  },
+  loadingText: {
+    color: '#ff0080',
+    fontSize: 24,
+    textAlign: 'center',
+    marginTop: 20,
   },
 });
