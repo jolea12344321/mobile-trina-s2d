@@ -57,21 +57,34 @@ export default function HomeScreen() {
 
 const styles = StyleSheet.create({
   container: {
+<<<<<<< HEAD
     backgroundColor: '#000',
     paddingBottom: 40,
     paddingTop: 20,
+=======
+    paddingHorizontal: 16,
+    paddingBottom: 32,
+    backgroundColor: '#F5F5F5', 
+>>>>>>> 6032bd1a19ae059dba21a0b8b9eb3535483741d5
   },
   header: {
     alignItems: 'center',
     marginBottom: 20,
   },
+<<<<<<< HEAD
   titleLogo: {
     color: '#ff0080',
     fontSize: 28,
+=======
+  title: {
+    fontSize: 32,
+    color: '#FF3366', 
+>>>>>>> 6032bd1a19ae059dba21a0b8b9eb3535483741d5
     fontWeight: 'bold',
     fontFamily: 'serif',
     textAlign: 'center',
   },
+<<<<<<< HEAD
   section: {
     paddingHorizontal: 16,
     paddingVertical: 20,
@@ -83,6 +96,36 @@ const styles = StyleSheet.create({
     fontFamily: 'serif',
     textTransform: 'lowercase',
     marginBottom: 5,
+=======
+  stepContainer: {
+    gap: 8,
+    marginBottom: 16,
+  },
+  subtitle: {
+    fontSize: 20,
+    color: '#333333', 
+    fontWeight: 'bold',
+  },
+  description: {
+    fontSize: 16,
+    color: '#666666', 
+  },
+  piercingsSection: {
+    marginBottom: 24,
+    padding: 10,
+    borderRadius: 8,
+    backgroundColor: '#FFFFFF', 
+    shadowColor: '#000000',
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    shadowOffset: { width: 0, height: 2 },
+  },
+  sectionTitle: {
+    fontSize: 18,
+    color: '#FF6600', 
+    fontWeight: 'bold',
+    marginBottom: 10,
+>>>>>>> 6032bd1a19ae059dba21a0b8b9eb3535483741d5
   },
   sectionSubtitle: {
     color: '#999',
@@ -94,6 +137,7 @@ const styles = StyleSheet.create({
     width: 150,
     height: 180,
     borderRadius: 8,
+<<<<<<< HEAD
     marginRight: 12,
     backgroundColor: '#222',
   },
@@ -106,6 +150,14 @@ const styles = StyleSheet.create({
   linkText: {
     fontSize: 16,
     color: '#ff0080',
+=======
+    borderWidth: 2,
+    borderColor: '#FF3366', 
+  },
+  linkText: {
+    fontSize: 16,
+    color: '#1E90FF', 
+>>>>>>> 6032bd1a19ae059dba21a0b8b9eb3535483741d5
     fontWeight: 'bold',
     textAlign: 'center',
     marginTop: 20,

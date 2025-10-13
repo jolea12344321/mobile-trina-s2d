@@ -1,11 +1,5 @@
 import { Image } from 'expo-image';
-import { Platform, StyleSheet, TextInput, TouchableOpacity, ScrollView } from 'react-native';
-
-import { HelloWave } from '@/components/hello-wave';
-import ParallaxScrollView from '@/components/parallax-scroll-view';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { Link } from 'expo-router';
+import { StyleSheet, TextInput, TouchableOpacity, ScrollView, View, Text } from 'react-native';
 import { useState } from 'react';
 
 export default function HomeScreen() {
@@ -16,64 +10,55 @@ export default function HomeScreen() {
   const [descricao, setDescricao] = useState('');
 
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#000000', dark: '#000000' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title" style={styles.title}>
+    <ScrollView contentContainerStyle={{ paddingVertical: 20 }} data-element="scroll-view">
+      <View style={styles.titleContainer} data-element="title-container">
+        <Text style={styles.title} data-element="title-text">
           VAMOS TIRAR A IDEIA DO PAPEL?
-        </ThemedText>
-        <HelloWave />
-      </ThemedView>
+        </Text>
+      </View>
 
-      <ThemedView style={styles.iconsRow}>
-        <ThemedView style={styles.iconWrapper}>
-          <ThemedView style={styles.iconCircle}>
-            <Image source={require('@/assets/images/ideia.png')} style={styles.iconImg} />
-          </ThemedView>
-          <ThemedText style={styles.iconText}>Ideia</ThemedText>
-        </ThemedView>
+      <View style={styles.iconsRow} data-element="icons-row">
+        <View style={styles.iconWrapper} data-element="icon-ideia">
+          <View style={styles.iconCircle} data-element="icon-circle-ideia">
+            <Image source={require('@/assets/images/ideia.png')} style={styles.iconImg} data-element="icon-img-ideia" />
+          </View>
+          <Text style={styles.iconText} data-element="icon-text-ideia">Ideia</Text>
+        </View>
 
-        <ThemedView style={styles.iconWrapper}>
-          <ThemedView style={styles.iconCircle}>
-            <Image source={require('@/assets/images/desenho.png')} style={styles.iconImg} />
-          </ThemedView>
-          <ThemedText style={styles.iconText}>Desenho</ThemedText>
-        </ThemedView>
+        <View style={styles.iconWrapper} data-element="icon-desenho">
+          <View style={styles.iconCircle} data-element="icon-circle-desenho">
+            <Image source={require('@/assets/images/desenho.png')} style={styles.iconImg} data-element="icon-img-desenho" />
+          </View>
+          <Text style={styles.iconText} data-element="icon-text-desenho">Desenho</Text>
+        </View>
 
-        <ThemedView style={styles.iconWrapper}>
-          <ThemedView style={styles.iconCircle}>
-            <Image source={require('@/assets/images/orçamento.png')} style={styles.iconImg} />
-          </ThemedView>
-          <ThemedText style={styles.iconText}>Orçamento</ThemedText>
-        </ThemedView>
+        <View style={styles.iconWrapper} data-element="icon-orcamento">
+          <View style={styles.iconCircle} data-element="icon-circle-orcamento">
+            <Image source={require('@/assets/images/orçamento.png')} style={styles.iconImg} data-element="icon-img-orcamento" />
+          </View>
+          <Text style={styles.iconText} data-element="icon-text-orcamento">Orçamento</Text>
+        </View>
 
-        <ThemedView style={styles.iconWrapper}>
-          <ThemedView style={styles.iconCircle}>
-            <Image source={require('@/assets/images/tatto.png')} style={styles.iconImg} />
-          </ThemedView>
-          <ThemedText style={styles.iconText}>Tattoo</ThemedText>
-        </ThemedView>
-      </ThemedView>
+        <View style={styles.iconWrapper} data-element="icon-tattoo">
+          <View style={styles.iconCircle} data-element="icon-circle-tattoo">
+            <Image source={require('@/assets/images/tatto.png')} style={styles.iconImg} data-element="icon-img-tattoo" />
+          </View>
+          <Text style={styles.iconText} data-element="icon-text-tattoo">Tattoo</Text>
+        </View>
+      </View>
 
-      {/* Formulário Adicionado */}
-      <ThemedView style={styles.formContainer}>
-        <ThemedText style={styles.label}>Nome</ThemedText>
+      <View style={styles.formContainer} data-element="form-container">
+        <Text style={styles.label} data-element="label-nome">Nome</Text>
         <TextInput
           placeholder="Nome"
           placeholderTextColor="#FF0090"
           style={styles.input}
           value={nome}
           onChangeText={setNome}
+          data-element="input-nome"
         />
 
-        <ThemedText style={styles.label}>Telefone</ThemedText>
+        <Text style={styles.label} data-element="label-telefone">Telefone</Text>
         <TextInput
           placeholder="Telefone"
           placeholderTextColor="#FF0090"
@@ -81,9 +66,10 @@ export default function HomeScreen() {
           value={telefone}
           onChangeText={setTelefone}
           keyboardType="phone-pad"
+          data-element="input-telefone"
         />
 
-        <ThemedText style={styles.label}>Email</ThemedText>
+        <Text style={styles.label} data-element="label-email">Email</Text>
         <TextInput
           placeholder="Email"
           placeholderTextColor="#FF0090"
@@ -92,19 +78,21 @@ export default function HomeScreen() {
           onChangeText={setEmail}
           keyboardType="email-address"
           autoCapitalize="none"
+          data-element="input-email"
         />
 
-        <ThemedText style={styles.label}>Política de Privacidade</ThemedText>
+        <Text style={styles.label} data-element="label-politica">Política de Privacidade</Text>
         <TouchableOpacity
           style={styles.checkbox}
           onPress={() => setAutorizo(!autorizo)}
+          data-element="checkbox-autorizo"
         >
-          <ThemedText style={{ color: autorizo ? '#FFF' : '#FF0090' }}>
+          <Text style={{ color: autorizo ? '#FFF' : '#FF0090' }} data-element="text-checkbox">
             {autorizo ? '✔ ' : ''}Autorizo o registro dos meus dados para contato
-          </ThemedText>
+          </Text>
         </TouchableOpacity>
 
-        <ThemedText style={styles.label}>Nos explique sua ideia</ThemedText>
+        <Text style={styles.label} data-element="label-descricao">Nos explique sua ideia</Text>
         <TextInput
           placeholder="Use esse campo para descrever sua ideia e abaixo nos enviar seus exemplos"
           placeholderTextColor="#FF0090"
@@ -113,91 +101,47 @@ export default function HomeScreen() {
           onChangeText={setDescricao}
           multiline
           textAlignVertical="top"
+          data-element="input-descricao"
         />
 
-        <TouchableOpacity style={styles.submitButton} onPress={() => alert('Ideia enviada!')}>
-          <ThemedText style={styles.submitButtonText}>ENVIAR SUA IDEIA</ThemedText>
+        <TouchableOpacity
+          style={styles.submitButton}
+          onPress={() => alert('Ideia enviada!')}
+          data-element="button-submit"
+        >
+          <Text style={styles.submitButtonText} data-element="text-submit">ENVIAR SUA IDEIA</Text>
         </TouchableOpacity>
-      </ThemedView>
-
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-
-      <ThemedView style={styles.stepContainer}>
-        <Link href="/modal">
-          <Link.Trigger>
-            <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-          </Link.Trigger>
-          <Link.Preview />
-        </Link>
-
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+      </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   titleContainer: {
-    flexDirection: 'row',
     alignItems: 'center',
-    gap: 8,
+    justifyContent: 'center',
     marginBottom: 16,
+    paddingHorizontal: 20,
   },
   title: {
     color: '#FF0090',
     fontWeight: 'bold',
-    fontSize: 20,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-    tintColor: '#FF0090',
+    fontSize: 28,
+    textAlign: 'center',
   },
   iconsRow: {
     flexDirection: 'row',
     justifyContent: 'space-around',
     marginVertical: 20,
+    paddingHorizontal: 10,
   },
   iconWrapper: {
     alignItems: 'center',
+    width: 70,
   },
   iconCircle: {
     backgroundColor: '#FF0090',
-    borderRadius: 50,
+    borderRadius: 40,
     width: 80,
     height: 80,
     justifyContent: 'center',
@@ -210,7 +154,7 @@ const styles = StyleSheet.create({
     tintColor: '#FFF',
   },
   iconText: {
-    color: '#ffffffff',
+    color: '#fff',
     fontSize: 12,
     fontWeight: '500',
     textAlign: 'center',
