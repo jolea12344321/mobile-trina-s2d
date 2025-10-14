@@ -7,7 +7,7 @@ import { ThemedView } from '@/components/themed-view';
 import { Link } from 'expo-router';
 
 const carouselData = [
-  { id: '1', image: require('@/assets/images/piercing.png'), title: 'Piercing 1' },
+  { id: '1', image: require('@/assets/images/piercing1.png'), title: 'Piercing 1' },
   { id: '2', image: require('@/assets/images/piercing.png'), title: 'Piercing 2' },
   { id: '3', image: require('@/assets/images/piercing.png'), title: 'Piercing 3' },
 ];
@@ -91,17 +91,17 @@ const styles = StyleSheet.create({
     textAlign: 'right',
   },
   carouselContainer: {
-    marginTop: 20,
-    marginBottom: 20,
+    marginTop: 10,
+    marginBottom: 10,
   },
   carouselItem: {
     justifyContent: 'center',
     alignItems: 'center',
-    marginRight: 15,
+    marginRight: 25,
   },
   carouselImage: {
-    width: 200,
-    height: 200,
+    width: 100,
+    height: 100,
     borderRadius: 10,
   },
   carouselTitle: {
