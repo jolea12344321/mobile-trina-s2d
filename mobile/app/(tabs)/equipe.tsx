@@ -11,20 +11,24 @@ export default function HomeScreen() {
     <ParallaxScrollView       
       headerBackgroundColor={{ light: '#FF0090', dark: '#000000' }}       
       headerImage={         
-        <Image           
-          source={require('@/assets/images/equipe.png')}           
-          style={styles.reactLogo}                    
-        />       
-
+        <View style={styles.headerContent}>
+          <Image           
+            source={require('@/assets/images/equipe.png')}           
+            style={styles.reactLogo}                    
+          />
+          <ThemedText style={styles.headerText}>
+          Com mais de 30 anos de mercado, a Trina’s Studio é composto por uma equipe de 12 tatuadores e body piercer, especialistas em diferentes tipos de tatuagem e piercing.
+          </ThemedText>        
+        </View>
       }>       
       <ThemedView style={styles.titleContainer}>  
-        color: #FF0090,      
-        <ThemedText type="title"style={{ fontSize: 35, color:'#FF0090', }}>𝙿𝚛𝚘𝚏𝚒𝚜𝚜𝚒𝚘𝚗𝚊𝚒𝚜</ThemedText>       
+        <ThemedText type="title" style={{ fontSize: 35, color: '#FF0090' }}>𝙿𝚛𝚘𝚏𝚒𝚜𝚜𝚒𝚘𝚗𝚊𝚒𝚜</ThemedText>       
       </ThemedView>        
 
+     
       <View style={styles.card}>         
         <Image           
-          source={{ uri: '...' }}            
+          source={{ uri: 'https://via.placeholder.com/150' }}            
           style={styles.cardImage}         
         />         
         <View style={styles.cardBody}>           
@@ -38,7 +42,7 @@ export default function HomeScreen() {
 
       <View style={styles.card}>         
         <Image           
-          source={{ uri: '...' }}            
+          source={{ uri: 'https://via.placeholder.com/150' }}            
           style={styles.cardImage}         
         />         
         <View style={styles.cardBody}>           
@@ -52,7 +56,7 @@ export default function HomeScreen() {
 
       <View style={styles.card}>         
         <Image           
-          source={{ uri: '...' }}            
+          source={{ uri: 'https://via.placeholder.com/150' }}            
           style={styles.cardImage}         
         />         
         <View style={styles.cardBody}>           
@@ -66,7 +70,7 @@ export default function HomeScreen() {
 
       <View style={styles.card}>         
         <Image           
-          source={{ uri: '...' }}            
+          source={{ uri: 'https://via.placeholder.com/150' }}            
           style={styles.cardImage}         
         />         
         <View style={styles.cardBody}>           
@@ -99,6 +103,23 @@ const styles = StyleSheet.create({
     left: 0,     
     margin: 0,     
   },   
+  headerContent: {
+    position: 'relative',
+    alignItems: 'flex-end', 
+    justifyContent: 'center',
+    height: 300, 
+    paddingRight: 20, 
+  },
+  headerText: {
+    position: 'absolute',
+    top: '50%', 
+    right: 0.5, 
+    color: '#FFF',
+    fontSize: 15,
+    fontWeight: 'bold',
+    textAlign: 'right', 
+    transform: [{ translateY: -50 }], 
+  },
   card: {     
     width: '40%',     
     marginVertical: 50,     
