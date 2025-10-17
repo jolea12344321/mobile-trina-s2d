@@ -25,10 +25,8 @@ export default function HomeScreen() {
         <ThemedText type="title" style={{ fontSize: 25, color: '#FF0090' }}>         𝑃𝑟𝑜𝑓𝑖𝑠𝑠𝑖𝑜𝑛𝑎𝑖𝑠</ThemedText>       
       </ThemedView>        
 
-      {/* Container for the 2 columns of cards */}
       <View style={styles.cardsContainer}> 
-
-        {/* Card 1 */}
+  
         <View style={styles.card}>         
           <Image           
              source={require('@/assets/images/jolea.png')}  
@@ -43,8 +41,7 @@ export default function HomeScreen() {
             </TouchableOpacity>         
           </View>       
         </View>        
-
-        {/* Card 2 */}
+ 
         <View style={styles.card}>         
           <Image           
             source={require('@/assets/images/milena.png')} 
@@ -63,8 +60,7 @@ export default function HomeScreen() {
       </View>  
 
       <View style={styles.cardsContainer}> 
-
-        
+  
         <View style={styles.card}>         
           <Image           
              source={require('@/assets/images/giovanna.png')}  
@@ -80,14 +76,43 @@ export default function HomeScreen() {
           </View>       
         </View>        
 
-        {/* Card 4 */}
-        <View style={styles.card}>         
+         <View style={styles.card}>         
           <Image           
              source={require('@/assets/images/fernanda.png')}  
             style={styles.cardImage}         
           />         
           <View style={styles.cardBody}>           
             <Text style={styles.cardTitle}>Patrícia Alves</Text>           
+            <Text style={styles.cardText}>             
+            </Text>           
+            <TouchableOpacity style={styles.cardButton} onPress={() => alert('Button Pressed')}>
+              <Text style={styles.cardButtonText}>Ver trabalho</Text>
+            </TouchableOpacity>         
+          </View>       
+        </View>      
+
+        <View style={styles.card}>         
+          <Image           
+             source={require('@/assets/images/yumi.png')}  
+            style={styles.cardImage}         
+          />         
+          <View style={styles.cardBody}>           
+            <Text style={styles.cardTitle}>Yumi                             Lira</Text>           
+            <Text style={styles.cardText}>             
+            </Text>           
+            <TouchableOpacity style={styles.cardButton} onPress={() => alert('Button Pressed')}>
+              <Text style={styles.cardButtonText}>Ver trabalho</Text>
+            </TouchableOpacity>         
+          </View>       
+        </View>      
+
+        <View style={styles.card}>         
+          <Image           
+             source={require('@/assets/images/bianca.png')}  
+            style={styles.cardImage}         
+          />         
+          <View style={styles.cardBody}>           
+            <Text style={styles.cardTitle}>Bianca Almeida</Text>           
             <Text style={styles.cardText}>             
             </Text>           
             <TouchableOpacity style={styles.cardButton} onPress={() => alert('Button Pressed')}>
@@ -142,11 +167,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',     
     flexWrap: 'wrap',   
     justifyContent: 'space-between',     
-    marginVertical: 20,     
+    marginVertical: 10,     
   },   
   card: {     
     width: '48%', 
-    marginBottom: 20,     
+    marginBottom: 10,     
     borderRadius: 10,     
     backgroundColor: 'transparent',     
     elevation: 3,     
@@ -157,7 +182,7 @@ const styles = StyleSheet.create({
     width: '100%',     
     height: 120,     
     borderTopLeftRadius: 10,     
-    borderTopRightRadius: 10,   
+    borderTopRightRadius: 5,   
   },   
   cardBody: {     
     padding: 10,   
@@ -179,7 +204,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,     
     alignItems: 'center',     
     justifyContent: 'center',     
-    marginTop: 15,     
+    marginTop: 1,     
   },   
   cardButtonText: {     
     color: '#fff',     
