@@ -20,14 +20,14 @@ export default function HomeScreen() {
         </ThemedView>
         
         <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title" style={{ fontSize: 30, color:'#FF0090',}}>★   ★   ★   ★   ★   ★   ★   ★   ★</ThemedText>
+        <ThemedText type="title" style={{ fontSize: 20, color:'#FF0090',}}>★   ★   ★   ★   ★   ★   ★   ★   ★</ThemedText>
       </ThemedView>
 
-        <ThemedText type="title" style={{ fontSize: 45}}>𝒜𝓇𝓉𝑒 𝓃𝒶 𝓅𝑒𝓁𝑒,</ThemedText>
+        <ThemedText type="title" style={{ fontSize: 40}}>𝒜𝓇𝓉𝑒 𝓃𝒶 𝓅𝑒𝓁𝑒,</ThemedText>
       </ThemedView>
 
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title" style={{ fontSize: 45, color:'#FF0090', }}>       𝑒𝓈𝓉𝒾𝓁𝑜 𝓃𝒶 𝒶𝓁𝓂𝒶.</ThemedText>
+        <ThemedText type="title" style={{ fontSize: 36, color:'#FF0090', }}>       𝑒𝓈𝓉𝒾𝓁𝑜 𝓃𝒶 𝒶𝓁𝓂𝒶.</ThemedText>
       </ThemedView>
 
       <Image
@@ -62,9 +62,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#FF0090',
     borderColor: '#FF0090',
     borderWidth: 5,
-    width: 170,
-    borderRadius: 40,
-    padding: 5,
+    width: 120,
+    borderRadius: 30,
+    padding: 1,
     marginBottom: 10,
   },
   bottomRightImage: {
