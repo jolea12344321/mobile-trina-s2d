@@ -1,5 +1,5 @@
 import { Image } from 'expo-image'; 
-import { Platform, StyleSheet, View, Text, Button } from 'react-native';  
+import { Platform, StyleSheet, View, Text, TouchableOpacity } from 'react-native';  
 import { HelloWave } from '@/components/hello-wave'; 
 import ParallaxScrollView from '@/components/parallax-scroll-view'; 
 import { ThemedText } from '@/components/themed-text'; 
@@ -13,7 +13,7 @@ export default function HomeScreen() {
       headerImage={         
         <View style={styles.headerContent}>
           <Image           
-            source={require('@/assets/images/equipe.png')} // Imagem local corrigida
+            source={require('@/assets/images/equipe.png')} 
             style={styles.reactLogo}                    
           />
           <ThemedText style={styles.headerText}>
@@ -22,60 +22,82 @@ export default function HomeScreen() {
         </View>
       }>       
       <ThemedView style={styles.titleContainer}>  
-        <ThemedText type="title" style={{ fontSize: 25, color: '#FF0090' }}>      𝙿𝚛𝚘𝚏𝚒𝚜𝚜𝚒𝚘𝚗𝚊𝚒𝚜</ThemedText>       
+        <ThemedText type="title" style={{ fontSize: 25, color: '#FF0090' }}>         𝑃𝑟𝑜𝑓𝑖𝑠𝑠𝑖𝑜𝑛𝑎𝑖𝑠</ThemedText>       
       </ThemedView>        
 
-      <View style={styles.card}>         
-        <Image           
-          source={{ uri: 'https://via.placeholder.com/150' }} 
-          style={styles.cardImage}         
-        />         
-        <View style={styles.cardBody}>           
-          <Text style={styles.cardTitle}>Julia de Assis</Text>           
-          <Text style={styles.cardText}>             
-          </Text>           
-          <Button title="Ver trabalho" onPress={() => alert('Button Pressed')} />         
-        </View>       
-      </View>        
+      {/* Container for the 2 columns of cards */}
+      <View style={styles.cardsContainer}> 
 
-      <View style={styles.card}>         
-        <Image           
-          source={require('@/assets/images/milena.png')} 
-          style={styles.cardImage}         
-        />         
-        <View style={styles.cardBody}>           
-          <Text style={styles.cardTitle}>Milena dos Santos</Text>           
-          <Text style={styles.cardText}>             
-          </Text>           
-          <Button title="Ver trabalho" onPress={() => alert('Button Pressed')} />         
-        </View>       
-      </View>        
+        {/* Card 1 */}
+        <View style={styles.card}>         
+          <Image           
+             source={require('@/assets/images/jolea.png')}  
+            style={styles.cardImage}         
+          />         
+          <View style={styles.cardBody}>           
+            <Text style={styles.cardTitle}>Julia de Assis</Text>           
+            <Text style={styles.cardText}>             
+            </Text>           
+            <TouchableOpacity style={styles.cardButton} onPress={() => alert('Button Pressed')}>
+              <Text style={styles.cardButtonText}>Ver trabalho</Text>
+            </TouchableOpacity>         
+          </View>       
+        </View>        
 
-      <View style={styles.card}>         
-        <Image           
-          source={{ uri: 'https://via.placeholder.com/150' }} 
-          style={styles.cardImage}         
-        />         
-        <View style={styles.cardBody}>           
-          <Text style={styles.cardTitle}>Giovanna Verissimo</Text>           
-          <Text style={styles.cardText}>                        
-          </Text>           
-          <Button title="Ver trabalho" onPress={() => alert('Button Pressed')} />         
-        </View>       
-      </View>        
+        {/* Card 2 */}
+        <View style={styles.card}>         
+          <Image           
+            source={require('@/assets/images/milena.png')} 
+            style={styles.cardImage}         
+          />         
+          <View style={styles.cardBody}>           
+            <Text style={styles.cardTitle}>Milena dos Santos</Text>           
+            <Text style={styles.cardText}>             
+            </Text>           
+            <TouchableOpacity style={styles.cardButton} onPress={() => alert('Button Pressed')}>
+              <Text style={styles.cardButtonText}>Ver trabalho</Text>
+            </TouchableOpacity>         
+          </View>       
+        </View>        
 
-      <View style={styles.card}>         
-        <Image           
-          source={{ uri: 'https://via.placeholder.com/150' }} 
-          style={styles.cardImage}         
-        />         
-        <View style={styles.cardBody}>           
-          <Text style={styles.cardTitle}>Patrícia Alves</Text>           
-          <Text style={styles.cardText}>             
-          </Text>           
-          <Button title="Ver trabalho" onPress={() => alert('Button Pressed')} />         
-        </View>       
-      </View>     
+      </View>  
+
+      <View style={styles.cardsContainer}> 
+
+        
+        <View style={styles.card}>         
+          <Image           
+             source={require('@/assets/images/giovanna.png')}  
+            style={styles.cardImage}         
+          />         
+          <View style={styles.cardBody}>           
+            <Text style={styles.cardTitle}>Giovanna Verissimo</Text>           
+            <Text style={styles.cardText}>                         
+            </Text>           
+            <TouchableOpacity style={styles.cardButton} onPress={() => alert('Button Pressed')}>
+              <Text style={styles.cardButtonText}>Ver trabalho</Text>
+            </TouchableOpacity>         
+          </View>       
+        </View>        
+
+        {/* Card 4 */}
+        <View style={styles.card}>         
+          <Image           
+             source={require('@/assets/images/fernanda.png')}  
+            style={styles.cardImage}         
+          />         
+          <View style={styles.cardBody}>           
+            <Text style={styles.cardTitle}>Patrícia Alves</Text>           
+            <Text style={styles.cardText}>             
+            </Text>           
+            <TouchableOpacity style={styles.cardButton} onPress={() => alert('Button Pressed')}>
+              <Text style={styles.cardButtonText}>Ver trabalho</Text>
+            </TouchableOpacity>         
+          </View>       
+        </View>        
+
+      </View> 
+      
     </ParallaxScrollView>   
   ); 
 }
@@ -116,10 +138,16 @@ const styles = StyleSheet.create({
     transform: [{ translateY: -90 }], 
     maxWidth: '70%', 
   },
+  cardsContainer: {     
+    flexDirection: 'row',     
+    flexWrap: 'wrap',   
+    justifyContent: 'space-between',     
+    marginVertical: 20,     
+  },   
   card: {     
-    width: '40%',     
-    marginVertical: 40,     
-    borderRadius: 50,     
+    width: '48%', 
+    marginBottom: 20,     
+    borderRadius: 10,     
     backgroundColor: 'transparent',     
     elevation: 3,     
     shadowColor: '#000',     
@@ -127,7 +155,7 @@ const styles = StyleSheet.create({
   },   
   cardImage: {     
     width: '100%',     
-    height: 150,     
+    height: 120,     
     borderTopLeftRadius: 10,     
     borderTopRightRadius: 10,   
   },   
@@ -140,8 +168,22 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',   
   },   
   cardText: {     
-    fontSize: 14,     
+    fontSize: 1,     
     color: 'transparent',     
     marginVertical: 10,   
   }, 
-});
+  cardButton: {     
+    backgroundColor: '#FF0090',     
+    paddingVertical: 5,     
+    paddingHorizontal: 5,     
+    borderRadius: 10,     
+    alignItems: 'center',     
+    justifyContent: 'center',     
+    marginTop: 15,     
+  },   
+  cardButtonText: {     
+    color: '#fff',     
+    fontSize: 16,     
+    fontWeight: 'bold',     
+  }, 
+});  
