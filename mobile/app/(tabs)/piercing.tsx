@@ -1,10 +1,7 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet, View, FlatList, Text } from 'react-native';
-import { HelloWave } from '@/components/hello-wave';
 import ParallaxScrollView from '@/components/parallax-scroll-view';
 import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { Link } from 'expo-router';
+import { Image } from 'expo-image';
+import { FlatList, StyleSheet, View } from 'react-native';
 
 const carouselData = [
   { id: '1', image: require('@/assets/images/piercing1.png'), title: 'Piercing 1' },
@@ -15,7 +12,7 @@ const carouselData = [
 export default function HomeScreen() {
   return (
     <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
+      headerBackgroundColor={{ light: '#A1CEDC', dark: '#000000' }}
       headerImage={
         <View style={styles.headerContainer}>
           <Image
@@ -24,16 +21,24 @@ export default function HomeScreen() {
             resizeMode="cover"
           />
           <View style={styles.headerTextContainer}>
-            <ThemedText style={styles.piercingTitle}>piercings</ThemedText>
+            <ThemedText style={styles.piercingTitle}>𝐏𝐢𝐞𝐫𝐜𝐢𝐧𝐠𝐬</ThemedText>
             <ThemedText style={styles.headerText}>
-              Trabalhamos com a aplicação profissional de piercings, utilizando joias de alta qualidade para garantir a segurança e excelência no procedimento.
-              ABAIXO, confira alguns dos piercings disponíveis em nosso catálogo.
+              𝒯𝑟𝑎𝑏𝑎𝑙ℎ𝑎𝑚𝑜𝑠 𝑐𝑜𝑚 𝑎  𝑎𝑝𝑙𝑖𝑐𝑎ç𝑎𝑜 𝑝𝑟𝑜𝑓𝑖𝑠𝑠𝑖𝑜𝑛𝑎𝑙 𝑑𝑒 𝑝𝑖𝑒𝑟𝑐𝑖𝑛𝑔𝑠, 𝑢𝑡𝑖𝑙𝑖𝑧𝑎𝑛𝑑𝑜 𝑗𝑜𝑖𝑎𝑠 𝑑𝑒 𝑎𝑙𝑡𝑎 𝑞𝑢𝑎𝑙𝑖𝑑𝑎𝑑𝑒 𝑝𝑎𝑟𝑎 𝑔𝑎𝑟𝑎𝑛𝑡𝑖𝑟 𝑎 𝑠𝑒𝑔𝑢𝑟𝑎𝑛ç𝑎 𝑒 𝑒𝑥𝑒𝑙𝑒𝑛𝑐𝑖𝑎 𝑛𝑜 𝑝𝑟𝑜𝑐𝑒𝑑𝑖𝑚𝑒𝑛𝑡𝑜.
+              <ThemedText style={styles.highlightText}> 𝐀𝐁𝐀𝐈𝐗𝐎, </ThemedText>
+              𝑐𝑜𝑛𝑓𝑖𝑟𝑎 𝑎𝑙𝑔𝑢𝑛𝑠 𝑑𝑜𝑠 𝑝𝑖𝑒𝑟𝑐𝑖𝑛𝑔𝑠 𝑑𝑖𝑠𝑝𝑜𝑛𝑖𝑣𝑒𝑖𝑠 𝑒𝑚 𝑛𝑜𝑠𝑠𝑜 𝑐𝑎𝑡𝑎𝑙𝑜𝑔𝑜.
             </ThemedText>
           </View>
         </View>
       }
     >
-      {/* Carrossel simples */}
+      {/* Container do título: ocupa 100% da largura, com margem para separar do header e do carrossel */}
+      <View style={styles.carouselTitleContainer}>
+        <ThemedText style={styles.carouselHeaderTitle}>
+          piercings microdermals feitas por jubiraca
+        </ThemedText>
+      </View>
+
+      {/* Container do carrossel: ocupa 100% da largura */}
       <View style={styles.carouselContainer}>
         <FlatList
           data={carouselData}
@@ -67,43 +72,66 @@ const styles = StyleSheet.create({
   },
   headerTextContainer: {
     position: 'absolute',
-    right: 20,
-    top: 0,
-    bottom: 0,
-    justifyContent: 'center',
-    alignItems: 'flex-end',
-    paddingHorizontal: 10,
-    maxWidth: '50%',
+    top: 10,
+    left: 10,
+    right: 10,
+    flexDirection: 'column',
+    alignItems: 'flex-start',
   },
   piercingTitle: {
-    color: 'pink',
-    fontSize: 24,
+    color: '#FF0090',
+    fontSize: 28,
     fontWeight: 'bold',
     textAlign: 'left',
+    marginBottom: 8,
   },
   headerText: {
     color: 'white',
     fontWeight: 'bold',
-    fontSize: 12,
+    fontSize: 20,
     textShadowColor: 'rgba(0, 0, 0, 0.7)',
     textShadowOffset: { width: 1, height: 1 },
     textShadowRadius: 3,
-    textAlign: 'right',
+    textAlign: 'left',
+    lineHeight: 22,
   },
-  carouselContainer: {
-    marginTop: 10,
+  highlightText: {
+    color: 'pink',
+    fontWeight: 'bold',
+  },
+
+  carouselTitleContainer: {
+    width: '100%',
+    marginTop: 20,
     marginBottom: 10,
+    paddingHorizontal: 10,
   },
+
+  carouselHeaderTitle: {
+    fontSize: 22,
+    fontWeight: 'bold',
+    color: '#FF0090',
+    textAlign: 'center',
+  },
+
+  carouselContainer: {
+    width: '100%',
+    paddingLeft: 10,
+    marginBottom: 20,
+  },
+
   carouselItem: {
     justifyContent: 'center',
     alignItems: 'center',
     marginRight: 25,
   },
+
   carouselImage: {
     width: 100,
     height: 100,
     borderRadius: 10,
   },
+
   carouselTitle: {
     marginTop: 10,
     fontWeight: 'bold',
