@@ -1,7 +1,9 @@
+import { Image } from 'expo-image';
+import { StyleSheet, View, FlatList } from 'react-native';
 import ParallaxScrollView from '@/components/parallax-scroll-view';
 import { ThemedText } from '@/components/themed-text';
-import { Image } from 'expo-image';
-import { FlatList, StyleSheet, View } from 'react-native';
+import { ThemedView } from '@/components/themed-view';
+import { Link } from 'expo-router';
 
 const carouselData = [
   { id: '1', image: require('@/assets/images/piercing1.png'), title: 'Piercing 1' },
@@ -31,14 +33,7 @@ export default function HomeScreen() {
         </View>
       }
     >
-      {/* Container do título: ocupa 100% da largura, com margem para separar do header e do carrossel */}
-      <View style={styles.carouselTitleContainer}>
-        <ThemedText style={styles.carouselHeaderTitle}>
-          piercings microdermals feitas por jubiraca
-        </ThemedText>
-      </View>
-
-      {/* Container do carrossel: ocupa 100% da largura */}
+      {/* Carrossel simples */}
       <View style={styles.carouselContainer}>
         <FlatList
           data={carouselData}
@@ -53,6 +48,7 @@ export default function HomeScreen() {
           )}
         />
       </View>
+
     </ParallaxScrollView>
   );
 }
@@ -92,26 +88,7 @@ const styles = StyleSheet.create({
     textShadowColor: 'rgba(0, 0, 0, 0.7)',
     textShadowOffset: { width: 1, height: 1 },
     textShadowRadius: 3,
-    textAlign: 'left',
-    lineHeight: 22,
-  },
-  highlightText: {
-    color: 'pink',
-    fontWeight: 'bold',
-  },
-
-  carouselTitleContainer: {
-    width: '100%',
-    marginTop: 20,
-    marginBottom: 10,
-    paddingHorizontal: 10,
-  },
-
-  carouselHeaderTitle: {
-    fontSize: 22,
-    fontWeight: 'bold',
-    color: '#FF0090',
-    textAlign: 'center',
+    textAlign: 'right',
   },
 
   carouselContainer: {
@@ -127,9 +104,9 @@ const styles = StyleSheet.create({
   },
 
   carouselImage: {
-    width: 100,
-    height: 100,
-    borderRadius: 10,
+    width: 125,
+    height: 125,
+    borderRadius: 10 ,
   },
 
   carouselTitle: {
