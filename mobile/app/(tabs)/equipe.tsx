@@ -26,7 +26,7 @@ export default function HomeScreen() {
       </ThemedView>        
 
       <View style={styles.cardsContainer}> 
-  
+
         <View style={styles.card}>         
           <Image           
              source={require('@/assets/images/jolea.png')}  
@@ -34,14 +34,12 @@ export default function HomeScreen() {
           />         
           <View style={styles.cardBody}>           
             <Text style={styles.cardTitle}>Julia de Assis</Text>           
-            <Text style={styles.cardText}>             
-            </Text>           
             <TouchableOpacity style={styles.cardButton} onPress={() => alert('Button Pressed')}>
               <Text style={styles.cardButtonText}>Ver trabalho</Text>
             </TouchableOpacity>         
           </View>       
         </View>        
- 
+
         <View style={styles.card}>         
           <Image           
             source={require('@/assets/images/milena.png')} 
@@ -49,8 +47,6 @@ export default function HomeScreen() {
           />         
           <View style={styles.cardBody}>           
             <Text style={styles.cardTitle}>Milena dos Santos</Text>           
-            <Text style={styles.cardText}>             
-            </Text>           
             <TouchableOpacity style={styles.cardButton} onPress={() => alert('Button Pressed')}>
               <Text style={styles.cardButtonText}>Ver trabalho</Text>
             </TouchableOpacity>         
@@ -60,7 +56,7 @@ export default function HomeScreen() {
       </View>  
 
       <View style={styles.cardsContainer}> 
-  
+
         <View style={styles.card}>         
           <Image           
              source={require('@/assets/images/giovanna.png')}  
@@ -68,8 +64,6 @@ export default function HomeScreen() {
           />         
           <View style={styles.cardBody}>           
             <Text style={styles.cardTitle}>Giovanna Verissimo</Text>           
-            <Text style={styles.cardText}>                         
-            </Text>           
             <TouchableOpacity style={styles.cardButton} onPress={() => alert('Button Pressed')}>
               <Text style={styles.cardButtonText}>Ver trabalho</Text>
             </TouchableOpacity>         
@@ -83,13 +77,11 @@ export default function HomeScreen() {
           />         
           <View style={styles.cardBody}>           
             <Text style={styles.cardTitle}>Patrícia Alves</Text>           
-            <Text style={styles.cardText}>             
-            </Text>           
             <TouchableOpacity style={styles.cardButton} onPress={() => alert('Button Pressed')}>
               <Text style={styles.cardButtonText}>Ver trabalho</Text>
             </TouchableOpacity>         
           </View>       
-        </View>      
+        </View>       
 
         <View style={styles.card}>         
           <Image           
@@ -97,14 +89,12 @@ export default function HomeScreen() {
             style={styles.cardImage}         
           />         
           <View style={styles.cardBody}>           
-            <Text style={styles.cardTitle}>Yumi                             Lira</Text>           
-            <Text style={styles.cardText}>             
-            </Text>           
+            <Text style={styles.cardTitle}>Yumi Lira</Text>           
             <TouchableOpacity style={styles.cardButton} onPress={() => alert('Button Pressed')}>
               <Text style={styles.cardButtonText}>Ver trabalho</Text>
             </TouchableOpacity>         
           </View>       
-        </View>      
+        </View>       
 
         <View style={styles.card}>         
           <Image           
@@ -113,8 +103,6 @@ export default function HomeScreen() {
           />         
           <View style={styles.cardBody}>           
             <Text style={styles.cardTitle}>Bianca Almeida</Text>           
-            <Text style={styles.cardText}>             
-            </Text>           
             <TouchableOpacity style={styles.cardButton} onPress={() => alert('Button Pressed')}>
               <Text style={styles.cardButtonText}>Ver trabalho</Text>
             </TouchableOpacity>         
@@ -132,10 +120,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',     
     alignItems: 'center',     
     gap: 8,   
-  },   
-  stepContainer: {     
-    gap: 8,     
-    marginBottom: 8,   
   },   
   reactLogo: {     
     width: '100%',      
@@ -166,11 +150,12 @@ const styles = StyleSheet.create({
   cardsContainer: {     
     flexDirection: 'row',     
     flexWrap: 'wrap',   
-    justifyContent: 'space-between',     
+    justifyContent: 'space-evenly',     
     marginVertical: 10,     
   },   
   card: {     
-    width: '48%', 
+    width: 150, 
+    height: 180,
     marginBottom: 10,     
     borderRadius: 10,     
     backgroundColor: 'transparent',     
@@ -183,6 +168,7 @@ const styles = StyleSheet.create({
     height: 120,     
     borderTopLeftRadius: 10,     
     borderTopRightRadius: 5,   
+    resizeMode: 'cover',
   },   
   cardBody: {     
     padding: 10,   
@@ -192,11 +178,6 @@ const styles = StyleSheet.create({
     fontSize: 18,     
     fontWeight: 'bold',   
   },   
-  cardText: {     
-    fontSize: 1,     
-    color: 'transparent',     
-    marginVertical: 10,   
-  }, 
   cardButton: {     
     backgroundColor: '#FF0090',     
     paddingVertical: 5,     
@@ -211,4 +192,4 @@ const styles = StyleSheet.create({
     fontSize: 16,     
     fontWeight: 'bold',     
   }, 
-});  
+}); 
