@@ -2,6 +2,8 @@ import { Image } from 'expo-image';
 import { StyleSheet, View, FlatList } from 'react-native';
 import ParallaxScrollView from '@/components/parallax-scroll-view';
 import { ThemedText } from '@/components/themed-text';
+import { ThemedView } from '@/components/themed-view';
+import { Link } from 'expo-router';
 
 const carouselData = [
   { id: '1', image: require('@/assets/images/piercing1.png'), title: 'Piercing 1' },
@@ -31,87 +33,7 @@ export default function HomeScreen() {
         </View>
       }
     >
-      <View style={styles.carouselTitleContainer}>
-        <ThemedText style={styles.carouselHeaderTitle}>
-          piercings microdermals
-        </ThemedText>
-
-        <ThemedText
-  style={{
-    fontSize: 15,
-    fontFamily: 'italiana',
-    color: '#FF0090',
-    textAlign: 'left',
-  }}
->
-  feitas por jubiraca
-</ThemedText>
-      </View>
-
-      <View style={styles.carouselContainer}>
-        <FlatList
-          data={carouselData}
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          keyExtractor={item => item.id}
-          renderItem={({ item }) => (
-            <View style={styles.carouselItem}>
-              <Image source={item.image} style={styles.carouselImage} resizeMode="cover" />
-              <ThemedText style={styles.carouselTitle}>{item.title}</ThemedText>
-            </View>
-          )}
-        />
-      </View>
-
-      <View style={styles.carouselTitleContainer}>
-        <ThemedText style={styles.carouselHeaderTitle}>
-          piercings microdermals
-        </ThemedText>
-
-        <ThemedText
-  style={{
-    fontSize: 15,
-    fontFamily: 'italiana',
-    color: '#FF0090',
-    textAlign: 'left',
-  }}
->
-  feitas por jubiraca
-</ThemedText>
-      </View>
-
-      <View style={styles.carouselContainer}>
-        <FlatList
-          data={carouselData}
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          keyExtractor={item => item.id}
-          renderItem={({ item }) => (
-            <View style={styles.carouselItem}>
-              <Image source={item.image} style={styles.carouselImage} resizeMode="cover" />
-              <ThemedText style={styles.carouselTitle}>{item.title}</ThemedText>
-            </View>
-          )}
-        />
-      </View>
-
-      <View style={styles.carouselTitleContainer}>
-        <ThemedText style={styles.carouselHeaderTitle}>
-          piercings microdermals
-        </ThemedText>
-
-        <ThemedText
-  style={{
-    fontSize: 15,
-    fontFamily: 'italiana',
-    color: '#FF0090',
-    textAlign: 'left',
-  }}
->
-  feitas por jubiraca
-</ThemedText>
-      </View>
-
+      {/* Carrossel simples */}
       <View style={styles.carouselContainer}>
         <FlatList
           data={carouselData}
@@ -166,25 +88,7 @@ const styles = StyleSheet.create({
     textShadowColor: 'rgba(0, 0, 0, 0.7)',
     textShadowOffset: { width: 1, height: 1 },
     textShadowRadius: 3,
-    textAlign: 'left',
-    lineHeight: 22,
-  },
-  highlightText: {
-    color: 'pink',
-    fontWeight: 'bold',
-  },
-
-  carouselTitleContainer: {
-    width: '100%',
-    marginBottom: 10,
-    paddingRight: 90,
-  },
-
-  carouselHeaderTitle: {
-    fontSize: 25,
-    fontFamily: 'italiana',
-    color: '#FF0090',
-    textAlign: 'left',
+    textAlign: 'right',
   },
 
   carouselContainer: {
