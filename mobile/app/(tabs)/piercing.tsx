@@ -1,18 +1,89 @@
+import React from 'react';
 import { Image } from 'expo-image';
 import { StyleSheet, View, FlatList } from 'react-native';
 import ParallaxScrollView from '@/components/parallax-scroll-view';
 import { ThemedText } from '@/components/themed-text';
 
-const carouselData = [
-  { id: '1', image: require('@/assets/images/piercing1.png'), title: 'Piercing 1' },
-  { id: '2', image: require('@/assets/images/piercing.png'), title: 'Piercing 2' },
-  { id: '3', image: require('@/assets/images/piercing.png'), title: 'Piercing 3' },
+const fixedCarouselData1 = [
+  { id: '1', image: require('@/assets/images/piercing1.png') },
+  { id: '2', image: require('@/assets/images/microdermal.jpg') },
+  { id: '3', image: require('@/assets/images/costas.jpg') },
+  { id: '4', image: require('@/assets/images/colar.jpg')},
 ];
+
+const fixedCarouselData2 = [
+  { id: '1', image: require('@/assets/images/septo.jpg'), title: 'Piercing Variado 1' },
+  { id: '2', image: require('@/assets/images/boca.jpg'), title: 'Piercing Variado 2' },
+  { id: '3', image: require('@/assets/images/boca.jpg'), title: 'Piercing Variado 3' },
+];
+
+const fixedCarouselData3 = [
+  { id: '1', image: require('@/assets/images/boca.jpg'), title: 'Piercing Estilo 1' },
+  { id: '2', image: require('@/assets/images/boca.jpg'), title: 'Piercing Estilo 2' },
+  { id: '3', image: require('@/assets/images/boca.jpg'), title: 'Piercing Estilo 3' },
+];
+
+function Carousel1() {
+  return (
+    <View style={styles.carouselContainer}>
+      <FlatList
+        data={fixedCarouselData1}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        keyExtractor={item => item.id}
+        renderItem={({ item }) => (
+          <View style={styles.carouselItem}>
+            <Image source={item.image} style={styles.carouselImage} resizeMode="cover" />
+          
+          </View>
+        )}
+      />
+    </View>
+  );
+}
+
+function Carousel2() {
+  return (
+    <View style={styles.carouselContainer}>
+      <FlatList
+        data={fixedCarouselData2}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        keyExtractor={item => item.id}
+        renderItem={({ item }) => (
+          <View style={styles.carouselItem}>
+            <Image source={item.image} style={styles.carouselImage} resizeMode="cover" />
+            <ThemedText style={styles.carouselTitle}>{item.title}</ThemedText>
+          </View>
+        )}
+      />
+    </View>
+  );
+}
+
+function Carousel3() {
+  return (
+    <View style={styles.carouselContainer}>
+      <FlatList
+        data={fixedCarouselData3}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        keyExtractor={item => item.id}
+        renderItem={({ item }) => (
+          <View style={styles.carouselItem}>
+            <Image source={item.image} style={styles.carouselImage} resizeMode="cover" />
+            <ThemedText style={styles.carouselTitle}>{item.title}</ThemedText>
+          </View>
+        )}
+      />
+    </View>
+  );
+}
 
 export default function HomeScreen() {
   return (
     <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#000000' }}
+      headerBackgroundColor={{ light: '#000000', dark: '#000000' }}
       headerImage={
         <View style={styles.headerContainer}>
           <Image
@@ -32,101 +103,22 @@ export default function HomeScreen() {
       }
     >
       <View style={styles.carouselTitleContainer}>
-        <ThemedText style={styles.carouselHeaderTitle}>
-          piercings microdermals
-        </ThemedText>
-
-        <ThemedText
-  style={{
-    fontSize: 15,
-    fontFamily: 'italiana',
-    color: '#FF0090',
-    textAlign: 'left',
-  }}
->
-  feitas por jubiraca
-</ThemedText>
+        <ThemedText style={styles.carouselHeaderTitle}>piercings fixos</ThemedText>
+        <ThemedText style={styles.carouselSubtitle}>feitas por jubiraca</ThemedText>
       </View>
-
-      <View style={styles.carouselContainer}>
-        <FlatList
-          data={carouselData}
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          keyExtractor={item => item.id}
-          renderItem={({ item }) => (
-            <View style={styles.carouselItem}>
-              <Image source={item.image} style={styles.carouselImage} resizeMode="cover" />
-              <ThemedText style={styles.carouselTitle}>{item.title}</ThemedText>
-            </View>
-          )}
-        />
-      </View>
+      <Carousel1 />
 
       <View style={styles.carouselTitleContainer}>
-        <ThemedText style={styles.carouselHeaderTitle}>
-          piercings microdermals
-        </ThemedText>
-
-        <ThemedText
-  style={{
-    fontSize: 15,
-    fontFamily: 'italiana',
-    color: '#FF0090',
-    textAlign: 'left',
-  }}
->
-  feitas por jubiraca
-</ThemedText>
+        <ThemedText style={styles.carouselHeaderTitle}>piercings variados</ThemedText>
+        <ThemedText style={styles.carouselSubtitle}>modelos exclusivos</ThemedText>
       </View>
-
-      <View style={styles.carouselContainer}>
-        <FlatList
-          data={carouselData}
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          keyExtractor={item => item.id}
-          renderItem={({ item }) => (
-            <View style={styles.carouselItem}>
-              <Image source={item.image} style={styles.carouselImage} resizeMode="cover" />
-              <ThemedText style={styles.carouselTitle}>{item.title}</ThemedText>
-            </View>
-          )}
-        />
-      </View>
+      <Carousel2 />
 
       <View style={styles.carouselTitleContainer}>
-        <ThemedText style={styles.carouselHeaderTitle}>
-          piercings microdermals
-        </ThemedText>
-
-        <ThemedText
-  style={{
-    fontSize: 15,
-    fontFamily: 'italiana',
-    color: '#FF0090',
-    textAlign: 'left',
-  }}
->
-  feitas por jubiraca
-</ThemedText>
+        <ThemedText style={styles.carouselHeaderTitle}>piercings estilosos</ThemedText>
+        <ThemedText style={styles.carouselSubtitle}>as últimas tendências</ThemedText>
       </View>
-
-      <View style={styles.carouselContainer}>
-        <FlatList
-          data={carouselData}
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          keyExtractor={item => item.id}
-          renderItem={({ item }) => (
-            <View style={styles.carouselItem}>
-              <Image source={item.image} style={styles.carouselImage} resizeMode="cover" />
-              <ThemedText style={styles.carouselTitle}>{item.title}</ThemedText>
-            </View>
-          )}
-        />
-      </View>
-
+      <Carousel3 />
     </ParallaxScrollView>
   );
 }
@@ -187,6 +179,14 @@ const styles = StyleSheet.create({
     textAlign: 'left',
   },
 
+  carouselSubtitle: {
+    fontSize: 15,
+    fontFamily: 'italiana',
+    color: '#FF0090',
+    textAlign: 'left',
+    marginBottom: 10,
+  },
+
   carouselContainer: {
     width: '100%',
     paddingLeft: 10,
@@ -200,14 +200,15 @@ const styles = StyleSheet.create({
   },
 
   carouselImage: {
-    width: 125,
-    height: 125,
-    borderRadius: 10 ,
+    width: 180,
+    height: 150,
+    borderRadius: 10,
   },
 
   carouselTitle: {
     marginTop: 10,
     fontWeight: 'bold',
     fontSize: 16,
+    color: 'white',
   },
 });
