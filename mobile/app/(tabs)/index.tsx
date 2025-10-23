@@ -9,13 +9,13 @@ export default function HomeScreen() {
       <ThemedView style={styles.titleContainer}>
         <ThemedView style={styles.boxContainer}>
           <ThemedView style={styles.box}>
-            <ThemedText type="subtitle" style={{ fontSize: 18 }}>+350 prêmios ao longo dos anos</ThemedText>
+            <ThemedText type="subtitle" style={{ fontSize: 16}}>+350 prêmios ao longo dos anos</ThemedText>
           </ThemedView>
           <ThemedView style={styles.box}>
-            <ThemedText type="subtitle" style={{ fontSize: 18 }}>+100 profissionais marcaram nossa história</ThemedText>
+            <ThemedText type="subtitle" style={{ fontSize: 13 }}>+100 profissionais marcaram nossa história</ThemedText>
           </ThemedView>
           <ThemedView style={styles.box}>
-            <ThemedText type="subtitle" style={{ fontSize: 18 }}>+1000 Clientes satisfeitos</ThemedText>
+            <ThemedText type="subtitle" style={{ fontSize: 16}}>+1000 Clientes satisfeitos</ThemedText>
           </ThemedView>
         </ThemedView>
         
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     borderColor: '#FF0090',
     borderWidth: 5,
     width: 120,
-    borderRadius: 30,
+    borderRadius: 20,
     padding: 1,
     marginBottom: 10,
   },
