@@ -12,14 +12,15 @@ const fixedCarouselData1 = [
 ];
 
 const fixedCarouselData2 = [
-  { id: '1', image: require('@/assets/images/septo.jpg'), title: 'Piercing Variado 1' },
-  { id: '2', image: require('@/assets/images/boca.jpg'), title: 'Piercing Variado 2' },
-  { id: '3', image: require('@/assets/images/boca.jpg'), title: 'Piercing Variado 3' },
+  { id: '1', image: require('@/assets/images/septo.jpg'),  },
+  { id: '2', image: require('@/assets/images/boca.jpg'), },
+  { id: '3', image: require('@/assets/images/orelha.png'), },
+  { id: '4', image: require('@/assets/images/nariz.png'), },
 ];
 
 const fixedCarouselData3 = [
-  { id: '1', image: require('@/assets/images/boca.jpg'), title: 'Piercing Estilo 1' },
-  { id: '2', image: require('@/assets/images/boca.jpg'), title: 'Piercing Estilo 2' },
+  { id: '1', image: require('@/assets/images/joiairelha.png'), title: 'Piercing Estilo 1' },
+  { id: '2', image: require('@/assets/images/pirci.png'), title: 'Piercing Estilo 2' },
   { id: '3', image: require('@/assets/images/boca.jpg'), title: 'Piercing Estilo 3' },
 ];
 
@@ -53,7 +54,7 @@ function Carousel2() {
         renderItem={({ item }) => (
           <View style={styles.carouselItem}>
             <Image source={item.image} style={styles.carouselImage} resizeMode="cover" />
-            <ThemedText style={styles.carouselTitle}>{item.title}</ThemedText>
+
           </View>
         )}
       />
