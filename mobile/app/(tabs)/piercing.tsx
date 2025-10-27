@@ -19,9 +19,10 @@ const fixedCarouselData2 = [
 ];
 
 const fixedCarouselData3 = [
-  { id: '1', image: require('@/assets/images/joiairelha.png'), title: 'Piercing Estilo 1' },
-  { id: '2', image: require('@/assets/images/pirci.png'), title: 'Piercing Estilo 2' },
-  { id: '3', image: require('@/assets/images/boca.jpg'), title: 'Piercing Estilo 3' },
+  { id: '1', image: require('@/assets/images/orelha.jpeg'),  },
+  { id: '2', image: require('@/assets/images/umbigo.jpeg'),  },
+  { id: '3', image: require('@/assets/images/septo2.jpeg'),  },
+  { id: '4', image: require('@/assets/images/naosei.jpeg'),  },
 ];
 
 function Carousel1() {
@@ -73,7 +74,6 @@ function Carousel3() {
         renderItem={({ item }) => (
           <View style={styles.carouselItem}>
             <Image source={item.image} style={styles.carouselImage} resizeMode="cover" />
-            <ThemedText style={styles.carouselTitle}>{item.title}</ThemedText>
           </View>
         )}
       />
@@ -104,14 +104,14 @@ export default function HomeScreen() {
       }
     >
       <View style={styles.carouselTitleContainer}>
-        <ThemedText style={styles.carouselHeaderTitle}>piercings fixos</ThemedText>
-        <ThemedText style={styles.carouselSubtitle}>feitas por jubiraca</ThemedText>
+        <ThemedText style={styles.carouselHeaderTitle}>Piercings microdermals</ThemedText>
+        <ThemedText style={styles.carouselSubtitle}>Feitas por Bianca Almeida </ThemedText>
       </View>
       <Carousel1 />
 
       <View style={styles.carouselTitleContainer}>
-        <ThemedText style={styles.carouselHeaderTitle}>piercings variados</ThemedText>
-        <ThemedText style={styles.carouselSubtitle}>modelos exclusivos</ThemedText>
+        <ThemedText style={styles.carouselHeaderTitle}>Piercings Faciais</ThemedText>
+        <ThemedText style={styles.carouselSubtitle}>Feitas por </ThemedText>
       </View>
       <Carousel2 />
 
@@ -183,7 +183,7 @@ const styles = StyleSheet.create({
   carouselSubtitle: {
     fontSize: 15,
     fontFamily: 'italiana',
-    color: '#FF0090',
+    color: '#CCC',
     textAlign: 'left',
     marginBottom: 10,
   },
