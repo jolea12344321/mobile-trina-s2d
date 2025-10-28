@@ -1,6 +1,6 @@
 import { Link } from 'expo-router';
 import { useEffect, useState } from 'react';
-import { ScrollView, StyleSheet, Text, View, Image } from 'react-native';
+import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 type TattooItem = {
   id: string;
@@ -16,12 +16,8 @@ const categories = [
   'realistic',
   'minimalist',
   'tribal',
-  'geometric',
-  'watercolor',
-  'oldschool',
-  'fineline',
   'blackwork',
-  'japanese',
+  'Bordada',
 ];
 
 const apiBase = 'http://localhost:3000';
@@ -111,7 +107,7 @@ const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 16,
     paddingBottom: 32,
-    backgroundColor: '#F5F5F5',
+    backgroundColor: '#000', // fundo preto
   },
   header: {
     alignItems: 'center',
@@ -119,7 +115,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 32,
-    color: '#FF3366',
+    color: '#FF0090', // visível no preto
     fontWeight: 'bold',
     fontFamily: 'serif',
     textAlign: 'center',
@@ -127,7 +123,7 @@ const styles = StyleSheet.create({
   categoryContainer: {
     marginBottom: 24,
     padding: 10,
-    backgroundColor: '#fff',
+    backgroundColor: '#111', // fundo levemente diferente para contraste
     borderRadius: 8,
     shadowColor: '#000',
     shadowOpacity: 0.1,
@@ -140,35 +136,36 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontSize: 18,
-    color: '#FF6600',
+    color: '#FF0090', // visível no preto
     fontWeight: 'bold',
     marginBottom: 10,
   },
   sectionSubtitle: {
-    color: '#999',
+    color: '#ccc', // mais claro para destacar no fundo escuro
     fontSize: 13,
     marginBottom: 10,
     fontStyle: 'italic',
+
   },
   linkText: {
     fontSize: 16,
-    color: '#1E90FF',
+    color: '#1E90FF', // visível no fundo preto
     fontWeight: 'bold',
     textAlign: 'center',
     marginTop: 20,
   },
   loadingText: {
-    color: '#ff0080',
+    color: '#ff0080', // visível no preto
     fontSize: 24,
     textAlign: 'center',
     marginTop: 20,
   },
   image: {
     width: 150,
-    height: 180,
+    height: 150, // quadrada
     borderRadius: 8,
     borderWidth: 2,
     borderColor: '#FF3366',
-    marginRight: 10, // espaçamento entre as imagens
+    marginRight: 10,
   },
 });
