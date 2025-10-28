@@ -8,21 +8,28 @@ const fixedCarouselData1 = [
   { id: '1', image: require('@/assets/images/piercing1.png') },
   { id: '2', image: require('@/assets/images/microdermal.jpg') },
   { id: '3', image: require('@/assets/images/costas.jpg') },
-  { id: '4', image: require('@/assets/images/colar.jpg')},
+  { id: '4', image: require('@/assets/images/colar.jpg') },
 ];
 
 const fixedCarouselData2 = [
-  { id: '1', image: require('@/assets/images/septo.jpg'),  },
-  { id: '2', image: require('@/assets/images/boca.jpg'), },
-  { id: '3', image: require('@/assets/images/orelha.png'), },
-  { id: '4', image: require('@/assets/images/nariz.png'), },
+  { id: '1', image: require('@/assets/images/septo.jpg') },
+  { id: '2', image: require('@/assets/images/boca.jpg') },
+  { id: '3', image: require('@/assets/images/orelha.png') },
+  { id: '4', image: require('@/assets/images/nariz.png') },
 ];
 
 const fixedCarouselData3 = [
-  { id: '1', image: require('@/assets/images/orelha.jpeg'),  },
-  { id: '2', image: require('@/assets/images/umbigo.jpeg'),  },
-  { id: '3', image: require('@/assets/images/septo2.jpeg'),  },
-  { id: '4', image: require('@/assets/images/naosei.jpeg'),  },
+  { id: '1', image: require('@/assets/images/orelha.jpeg') },
+  { id: '2', image: require('@/assets/images/umbigo.jpeg') },
+  { id: '3', image: require('@/assets/images/septo2.jpeg') },
+  { id: '4', image: require('@/assets/images/naosei.jpeg') },
+];
+
+const fixedCarouselData4 = [
+  { id: '1', image: require('@/assets/images/gato.jpeg') },
+  { id: '2', image: require('@/assets/images/flores.jpeg') },
+  { id: '3', image: require('@/assets/images/anel.jpeg') },
+  { id: '4', image: require('@/assets/images/flor.jpeg') },
 ];
 
 function Carousel1() {
@@ -36,7 +43,6 @@ function Carousel1() {
         renderItem={({ item }) => (
           <View style={styles.carouselItem}>
             <Image source={item.image} style={styles.carouselImage} resizeMode="cover" />
-          
           </View>
         )}
       />
@@ -55,7 +61,6 @@ function Carousel2() {
         renderItem={({ item }) => (
           <View style={styles.carouselItem}>
             <Image source={item.image} style={styles.carouselImage} resizeMode="cover" />
-
           </View>
         )}
       />
@@ -68,6 +73,25 @@ function Carousel3() {
     <View style={styles.carouselContainer}>
       <FlatList
         data={fixedCarouselData3}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        keyExtractor={item => item.id}
+        renderItem={({ item }) => (
+          <View style={styles.carouselItem}>
+            <Image source={item.image} style={styles.carouselImage} resizeMode="cover" />
+          </View>
+        )}
+      />
+    </View>
+  );
+}
+
+// 🔹 Novo carrossel (sem título)
+function Carousel4() {
+  return (
+    <View style={styles.carouselContainer}>
+      <FlatList
+        data={fixedCarouselData4}
         horizontal
         showsHorizontalScrollIndicator={false}
         keyExtractor={item => item.id}
@@ -95,7 +119,9 @@ export default function HomeScreen() {
           <View style={styles.headerTextContainer}>
             <ThemedText style={styles.piercingTitle}>𝐏𝐢𝐞𝐫𝐜𝐢𝐧𝐠𝐬</ThemedText>
             <ThemedText style={styles.headerText}>
-              𝒯𝑟𝑎𝑏𝑎𝑙ℎ𝑎𝑚𝑜𝑠 𝑐𝑜𝑚 𝑎  𝑎𝑝𝑙𝑖𝑐𝑎ç𝑎𝑜 𝑝𝑟𝑜𝑓𝑖𝑠𝑠𝑖𝑜𝑛𝑎𝑙 𝑑𝑒 𝑝𝑖𝑒𝑟𝑐𝑖𝑛𝑔𝑠, 𝑢𝑡𝑖𝑙𝑖𝑧𝑎𝑛𝑑𝑜 𝑗𝑜𝑖𝑎𝑠 𝑑𝑒 𝑎𝑙𝑡𝑎 𝑞𝑢𝑎𝑙𝑖𝑑𝑎𝑑𝑒 𝑝𝑎𝑟𝑎 𝑔𝑎𝑟𝑎𝑛𝑡𝑖𝑟 𝑎 𝑠𝑒𝑔𝑢𝑟𝑎𝑛ç𝑎 𝑒 𝑒𝑥𝑒𝑙𝑒𝑛𝑐𝑖𝑎 𝑛𝑜 𝑝𝑟𝑜𝑐𝑒𝑑𝑖𝑚𝑒𝑛𝑡𝑜.
+              𝒯𝑟𝑎𝑏𝑎𝑙ℎ𝑎𝑚𝑜𝑠 𝑐𝑜𝑚 𝑎 𝑎𝑝𝑙𝑖𝑐𝑎ç𝑎𝑜 𝑝𝑟𝑜𝑓𝑖𝑠𝑠𝑖𝑜𝑛𝑎𝑙 𝑑𝑒 𝑝𝑖𝑒𝑟𝑐𝑖𝑛𝑔𝑠,
+              𝑢𝑡𝑖𝑙𝑖𝑧𝑎𝑛𝑑𝑜 𝑗𝑜𝑖𝑎𝑠 𝑑𝑒 𝑎𝑙𝑡𝑎 𝑞𝑢𝑎𝑙𝑖𝑑𝑎𝑑𝑒 𝑝𝑎𝑟𝑎 𝑔𝑎𝑟𝑎𝑛𝑡𝑖𝑟 𝑎 𝑠𝑒𝑔𝑢𝑟𝑎𝑛ç𝑎 𝑒
+              𝑒𝑥𝑒𝑙𝑒𝑛𝑐𝑖𝑎 𝑛𝑜 𝑝𝑟𝑜𝑐𝑒𝑑𝑖𝑚𝑒𝑛𝑡𝑜.
               <ThemedText style={styles.highlightText}> 𝐀𝐁𝐀𝐈𝐗𝐎, </ThemedText>
               𝑐𝑜𝑛𝑓𝑖𝑟𝑎 𝑎𝑙𝑔𝑢𝑛𝑠 𝑑𝑜𝑠 𝑝𝑖𝑒𝑟𝑐𝑖𝑛𝑔𝑠 𝑑𝑖𝑠𝑝𝑜𝑛𝑖𝑣𝑒𝑖𝑠 𝑒𝑚 𝑛𝑜𝑠𝑠𝑜 𝑐𝑎𝑡𝑎𝑙𝑜𝑔𝑜.
             </ThemedText>
@@ -105,21 +131,24 @@ export default function HomeScreen() {
     >
       <View style={styles.carouselTitleContainer}>
         <ThemedText style={styles.carouselHeaderTitle}>Piercings microdermals</ThemedText>
-        <ThemedText style={styles.carouselSubtitle}>Feitas por Bianca Almeida </ThemedText>
+        <ThemedText style={styles.carouselSubtitle}>Feitas por Bianca Almeida e Yumi Lira </ThemedText>
       </View>
       <Carousel1 />
 
       <View style={styles.carouselTitleContainer}>
         <ThemedText style={styles.carouselHeaderTitle}>Piercings Faciais</ThemedText>
-        <ThemedText style={styles.carouselSubtitle}>Feitas por </ThemedText>
+        <ThemedText style={styles.carouselSubtitle}>Feitas por Patricia </ThemedText>
       </View>
       <Carousel2 />
 
       <View style={styles.carouselTitleContainer}>
-        <ThemedText style={styles.carouselHeaderTitle}>piercings estilosos</ThemedText>
+        <ThemedText style={styles.carouselHeaderTitle}>Piercings estilosos</ThemedText>
         <ThemedText style={styles.carouselSubtitle}>as últimas tendências</ThemedText>
       </View>
       <Carousel3 />
+
+      {/* 🔹 Novo carrossel sem título */}
+      <Carousel4 />
     </ParallaxScrollView>
   );
 }
@@ -166,20 +195,17 @@ const styles = StyleSheet.create({
     color: 'pink',
     fontWeight: 'bold',
   },
-
   carouselTitleContainer: {
     width: '100%',
     marginBottom: 10,
     paddingRight: 90,
   },
-
   carouselHeaderTitle: {
     fontSize: 25,
     fontFamily: 'italiana',
     color: '#FF0090',
     textAlign: 'left',
   },
-
   carouselSubtitle: {
     fontSize: 15,
     fontFamily: 'italiana',
@@ -187,29 +213,19 @@ const styles = StyleSheet.create({
     textAlign: 'left',
     marginBottom: 10,
   },
-
   carouselContainer: {
     width: '100%',
     paddingLeft: 10,
     marginBottom: 20,
   },
-
   carouselItem: {
     justifyContent: 'center',
     alignItems: 'center',
     marginRight: 25,
   },
-
   carouselImage: {
     width: 180,
     height: 150,
     borderRadius: 10,
-  },
-
-  carouselTitle: {
-    marginTop: 10,
-    fontWeight: 'bold',
-    fontSize: 16,
-    color: 'white',
   },
 });
