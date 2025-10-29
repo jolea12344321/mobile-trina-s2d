@@ -28,7 +28,9 @@ export default function HomeScreen() {
     >
 
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title" style={{ fontSize: 25, color: '#FF0090' }}>          𝑃𝑟𝑜𝑓𝑖𝑠𝑠𝑖𝑜𝑛𝑎𝑖𝑠</ThemedText>
+        <ThemedText type="title" style={styles.titleText}>
+          𝑃𝑟𝑜𝑓𝑖𝑠𝑠𝑖𝑜𝑛𝑎𝑖𝑠
+        </ThemedText>
       </ThemedView>
 
       <View style={styles.cardsContainer}>
@@ -103,6 +105,12 @@ const styles = StyleSheet.create({
   titleContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 10,
+  },
+  titleText: {
+    fontSize: 25,
+    color: '#FF0090',
   },
 
   headerWrapper: {
@@ -117,25 +125,30 @@ const styles = StyleSheet.create({
   },
   headerOverlay: {
     position: 'absolute',
-    bottom: 20  ,
+    bottom: 0,
+    right: 0,
     width: '100%',
-    backgroundColor: 'rgba(0,0,0,0.10)',
-    paddingVertical: 100,
-    paddingHorizontal: 30,
-    justifyContent: 'flex-end',
-    alignItems: 'flex-end',
+    height: '100%',
+    backgroundColor: 'rgba(0, 0, 0, 0.35)',
+    justifyContent: 'space-around', 
+    alignItems: 'flex-end', 
+    paddingHorizontal: 20,
+    paddingBottom: 25,
   },
   headerText: {
     color: '#FFF',
     fontSize: 16,
     textAlign: 'right',
     fontStyle: 'italic',
+    lineHeight: 22,
+    width: '80%',
   },
 
   cardsContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center',
+    marginTop: 10,
   },
 
   card: {
@@ -146,7 +159,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: 'transparent',
   },
-
   cardImage: {
     width: '100%',
     height: 120,
