@@ -23,6 +23,8 @@ const fixedCarouselData3 = [
   { id: '2', image: require('@/assets/images/umbigo.jpeg') },
   { id: '3', image: require('@/assets/images/septo2.jpeg') },
   { id: '4', image: require('@/assets/images/naosei.jpeg') },
+  { id: '5', image: require('@/assets/images/bola.jpeg') },
+  { id: '6', image: require('@/assets/images/triangulo.jpeg') },
 ];
 
 const fixedCarouselData4 = [
@@ -30,6 +32,8 @@ const fixedCarouselData4 = [
   { id: '2', image: require('@/assets/images/flores.jpeg') },
   { id: '3', image: require('@/assets/images/anel.jpeg') },
   { id: '4', image: require('@/assets/images/flor.jpeg') },
+  { id: '5', image: require('@/assets/images/mosquito.jpeg') },
+  { id: '6', image: require('@/assets/images/sla.jpeg') },
 ];
 
 function Carousel1() {
@@ -108,7 +112,7 @@ function Carousel4() {
 export default function HomeScreen() {
   return (
     <ParallaxScrollView
-      headerBackgroundColor={{ light: '#000000', dark: '#000000' }}
+      headerBackgroundColor={{ light: '#000000', dark: '#000' }}
       headerImage={
         <View style={styles.headerContainer}>
           <Image
@@ -142,8 +146,8 @@ export default function HomeScreen() {
       <Carousel2 />
 
       <View style={styles.carouselTitleContainer}>
-        <ThemedText style={styles.carouselHeaderTitle}>Piercings estilosos</ThemedText>
-        <ThemedText style={styles.carouselSubtitle}>as últimas tendências</ThemedText>
+        <ThemedText style={styles.carouselHeaderTitle}>Joias disponiveis</ThemedText>
+        <ThemedText style={styles.carouselSubtitle}></ThemedText>
       </View>
       <Carousel3 />
 
