@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Image, ScrollView, StyleSheet, Text, View } from 'react-native'; // ✅ só o Text
+import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 type TattooItem = {
   id: string;
@@ -20,6 +20,26 @@ const categories = [
 ];
 
 const apiBase = 'http://localhost:3000';
+
+
+const categoryNames: Record<string, string> = {
+  colored: 'Coloridas',
+  realistic: 'Realistas',
+  minimalist: 'Minimsalistas',
+  tribal: 'Tribais',
+  blackwork: 'Blackwork',
+  Bordada: 'Bordadas',
+};
+
+
+const artistNames: Record<string, string> = {
+  colored: 'Feitas por Milena Santos',
+  realistic: 'Feitas por Julia de Assis',
+  minimalist: 'Feitas por Giovanna Verissimo',
+  tribal: 'Feitas por Milena Santos',
+  blackwork: 'Feitas por Julia de Assis',
+  Bordada: 'Feitas por Giovanna Verissimo',
+};
 
 export default function HomeScreen() {
   const [tattooData, setTattooData] = useState<TattooData>({});
@@ -72,9 +92,6 @@ export default function HomeScreen() {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-    
-
-      
       <View style={styles.headerContainer}>
         <Image
           source={require('@/assets/images/tattoo.png')}
@@ -84,15 +101,23 @@ export default function HomeScreen() {
         <View style={styles.headerTextContainer}>
           <Text style={styles.piercingTitle}>𝑻𝒂𝒕𝒕𝒐𝒐</Text>
           <Text style={styles.headerText}>
-          𝖭𝗈𝗌𝗌𝗈𝗌 𝗉𝗋𝗈𝖿𝗂𝗌𝗌𝗂𝗈𝗇𝖺𝗂𝗌 𝗌𝖺̃𝗈 𝖺𝗅𝗍𝖺𝗆𝖾𝗇𝗍𝖾 𝗊𝗎𝖺𝗅𝗂𝖿𝗂𝖼𝖺𝖽𝗈𝗌, 𝖼𝗎𝗂𝖽𝖺𝗆 𝖽𝗈 𝗌𝖾𝗎 𝖻𝖾𝗆 𝖾𝗌𝗍𝖺𝗋 𝖽𝗎𝗋𝖺𝗇𝗍𝖾 𝖺 𝗌𝗎𝖺 𝗌𝖾𝖼̧𝖺̃𝗈, 𝖾 𝖼𝗎𝗂𝖽𝖺𝗆 𝗉𝖺𝗋𝖺 𝗊𝗎𝖾 𝗏𝗈𝖼𝖾̂ 𝖼𝗈𝗇𝗌𝗂𝗀𝖺 𝗍𝖾𝗋 𝗎𝗆 𝖾𝖿𝖾𝗂𝗍𝗈 𝖽𝖾𝗌𝖾𝗃𝖺𝖽𝗈.
+            𝖭𝗈𝗌𝗌𝗈𝗌 𝗉𝗋𝗈𝖿𝗂𝗌𝗌𝗂𝗈𝗇𝖺𝗂𝗌 𝗌𝖺̃𝗈 𝖺𝗅𝗍𝖺𝗆𝖾𝗇𝗍𝖾 𝗊𝗎𝖺𝗅𝗂𝖿𝗂𝖼𝖺𝖽𝗈𝗌, 𝖼𝗎𝗂𝖽𝖺𝗆 𝖽𝗈 𝗌𝖾𝗎 𝖻𝖾𝗆 𝖾𝗌𝗍𝖺𝗋 𝖽𝗎𝗋𝖺𝗇𝗍𝖾 𝖺 𝗌𝗎𝖺 𝗌𝖾𝖼̧𝖺̃𝗈, 𝖾 𝖼𝗎𝗂𝖽𝖺𝗆 𝗉𝖺𝗋𝖺 𝗊𝗎𝖾 𝗏𝗈𝖼𝖾̂ 𝖼𝗈𝗇𝗌𝗂𝗀𝖺 𝗍𝖾𝗋 𝗎𝗆 𝖾𝖿𝖾𝗂𝗍𝗈 𝖽𝖾𝗌𝖾𝗃𝖺𝖽𝗈.
           </Text>
         </View>
       </View>
 
       {Object.keys(tattooData).map((category) => (
         <View style={styles.categoryContainer} key={category}>
-          <Text style={styles.sectionTitle}>Tatuagens {category}</Text>
-          <Text style={styles.sectionSubtitle}>Feitas por Milena</Text>
+          {/* ✅ Nome legível do carrossel */}
+          <Text style={styles.sectionTitle}>
+            {categoryNames[category] || category}
+          </Text>
+
+          {/* ✅ Nome do artista */}
+          <Text style={styles.sectionSubtitle}>
+            {artistNames[category] || 'Feitas por nossa equipe'}
+          </Text>
+
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
             {tattooData[category].map(({ id, url }) => (
               <View key={id} style={styles.imageContainer}>
@@ -106,7 +131,6 @@ export default function HomeScreen() {
           </ScrollView>
         </View>
       ))}
-
     </ScrollView>
   );
 }
@@ -116,17 +140,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingBottom: 32,
     backgroundColor: '#000',
-  },
-  header: {
-    alignItems: 'center',
-    marginBottom: 20,
-  },
-  title: {
-    fontSize: 32,
-    color: '#FF0090',
-    fontWeight: 'bold',
-    fontFamily: 'serif',
-    textAlign: 'center',
   },
   headerContainer: {
     alignItems: 'center',
@@ -155,10 +168,6 @@ const styles = StyleSheet.create({
     color: '#ccc',
     textAlign: 'center',
     lineHeight: 20,
-  },
-  highlightText: {
-    color: '#FF3366',
-    fontWeight: 'bold',
   },
   categoryContainer: {
     marginBottom: 24,
@@ -191,21 +200,10 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
   },
-  linkText: {
-    fontSize: 16,
-    color: '#1E90FF',
-    fontWeight: 'bold',
-    textAlign: 'center',
-    marginTop: 20,
-  },
   loadingText: {
     color: '#ff0080',
     fontSize: 24,
     textAlign: 'center',
     marginTop: 20,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 16,
   },
 });
