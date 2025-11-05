@@ -1,206 +1,235 @@
-import { Image } from 'expo-image'; 
-import { StyleSheet, View, Text, TouchableOpacity, Dimensions } from 'react-native';
+import React from 'react';
+import { Image } from 'expo-image';
+import { StyleSheet, View, FlatList } from 'react-native';
 import ParallaxScrollView from '@/components/parallax-scroll-view';
 import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { useRouter } from 'expo-router';
 
-const screenWidth = Dimensions.get('window').width;
+const fixedCarouselData1 = [
+  { id: '1', image: require('@/assets/images/piercing1.png') },
+  { id: '2', image: require('@/assets/images/microdermal.jpg') },
+  { id: '3', image: require('@/assets/images/costas.jpg') },
+  { id: '4', image: require('@/assets/images/colar.jpg') },
+];
+
+const fixedCarouselData2 = [
+  { id: '1', image: require('@/assets/images/septo.jpg') },
+  { id: '2', image: require('@/assets/images/boca.jpg') },
+  { id: '3', image: require('@/assets/images/orelha.png') },
+  { id: '4', image: require('@/assets/images/nariz.png') },
+];
+
+const fixedCarouselData3 = [
+  { id: '1', image: require('@/assets/images/orelha.jpeg') },
+  { id: '2', image: require('@/assets/images/umbigo.jpeg') },
+  { id: '3', image: require('@/assets/images/septo2.jpeg') },
+  { id: '4', image: require('@/assets/images/naosei.jpeg') },
+  { id: '5', image: require('@/assets/images/bola.jpeg') },
+  { id: '6', image: require('@/assets/images/triangulo.jpeg') },
+];
+
+const fixedCarouselData4 = [
+  { id: '1', image: require('@/assets/images/gato.jpeg') },
+  { id: '2', image: require('@/assets/images/flores.jpeg') },
+  { id: '3', image: require('@/assets/images/anel.jpeg') },
+  { id: '4', image: require('@/assets/images/flor.jpeg') },
+  { id: '5', image: require('@/assets/images/mosquito.jpeg') },
+  { id: '6', image: require('@/assets/images/sla.jpeg') },
+];
+
+function Carousel1() {
+  return (
+    <View style={styles.carouselContainer}>
+      <FlatList
+        data={fixedCarouselData1}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        keyExtractor={item => item.id}
+        renderItem={({ item }) => (
+          <View style={styles.carouselItem}>
+            <Image source={item.image} style={styles.carouselImage} resizeMode="cover" />
+          </View>
+        )}
+      />
+    </View>
+  );
+}
+
+function Carousel2() {
+  return (
+    <View style={styles.carouselContainer}>
+      <FlatList
+        data={fixedCarouselData2}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        keyExtractor={item => item.id}
+        renderItem={({ item }) => (
+          <View style={styles.carouselItem}>
+            <Image source={item.image} style={styles.carouselImage} resizeMode="cover" />
+          </View>
+        )}
+      />
+    </View>
+  );
+}
+
+function Carousel3() {
+  return (
+    <View style={styles.carouselContainer}>
+      <FlatList
+        data={fixedCarouselData3}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        keyExtractor={item => item.id}
+        renderItem={({ item }) => (
+          <View style={styles.carouselItem}>
+            <Image source={item.image} style={styles.carouselImage} resizeMode="cover" />
+          </View>
+        )}
+      />
+    </View>
+  );
+}
+
+// 🔹 Novo carrossel (sem título)
+function Carousel4() {
+  return (
+    <View style={styles.carouselContainer}>
+      <FlatList
+        data={fixedCarouselData4}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        keyExtractor={item => item.id}
+        renderItem={({ item }) => (
+          <View style={styles.carouselItem}>
+            <Image source={item.image} style={styles.carouselImage} resizeMode="cover" />
+          </View>
+        )}
+      />
+    </View>
+  );
+}
 
 export default function HomeScreen() {
-  const router = useRouter();
-
-  function handleNavigate(name: string) {
-    // Piercers → página de piercing
-    const piercers = ["Patrícia Alves", "Yumi Lira", "Bianca Almeida"];
-
-    if (piercers.includes(name)) {
-      router.push("/piercing");
-    } else {
-      // Tatuadoras → página de tatuagem
-      router.push("/tatuagem");
-    }
-  }
-
   return (
     <ParallaxScrollView
-      headerBackgroundColor={{ light: '#000', dark: '#000' }}
+      headerBackgroundColor={{ light: '#000000', dark: '#000' }}
       headerImage={
-        <View style={styles.headerWrapper}>
+        <View style={styles.headerContainer}>
           <Image
-            source={require('@/assets/images/equipe.png')}
-            style={styles.headerImage}
+            source={require('@/assets/images/piercing.png')}
+            style={styles.reactLogo}
+            resizeMode="cover"
           />
-          <View style={styles.headerOverlay}>
-            <Text style={styles.headerText}>
-              Com mais de 30 anos de mercado, a Trina's Studio é composto por uma
-              equipe de 6 tatuadores e body piercer, especialistas em diferentes
-              tipos de tatuagem e piercing.
-            </Text>
+          <View style={styles.headerTextContainer}>
+            <ThemedText style={styles.piercingTitle}>𝐏𝐢𝐞𝐫𝐜𝐢𝐧𝐠𝐬</ThemedText>
+            <ThemedText style={styles.headerText}>
+              𝒯𝑟𝑎𝑏𝑎𝑙ℎ𝑎𝑚𝑜𝑠 𝑐𝑜𝑚 𝑎 𝑎𝑝𝑙𝑖𝑐𝑎ç𝑎𝑜 𝑝𝑟𝑜𝑓𝑖𝑠𝑠𝑖𝑜𝑛𝑎𝑙 𝑑𝑒 𝑝𝑖𝑒𝑟𝑐𝑖𝑛𝑔𝑠,
+              𝑢𝑡𝑖𝑙𝑖𝑧𝑎𝑛𝑑𝑜 𝑗𝑜𝑖𝑎𝑠 𝑑𝑒 𝑎𝑙𝑡𝑎 𝑞𝑢𝑎𝑙𝑖𝑑𝑎𝑑𝑒 𝑝𝑎𝑟𝑎 𝑔𝑎𝑟𝑎𝑛𝑡𝑖𝑟 𝑎 𝑠𝑒𝑔𝑢𝑟𝑎𝑛ç𝑎 𝑒
+              𝑒𝑥𝑒𝑙𝑒𝑛𝑐𝑖𝑎 𝑛𝑜 𝑝𝑟𝑜𝑐𝑒𝑑𝑖𝑚𝑒𝑛𝑡𝑜.
+              <ThemedText style={styles.highlightText}> 𝐀𝐁𝐀𝐈𝐗𝐎, </ThemedText>
+              𝑐𝑜𝑛𝑓𝑖𝑟𝑎 𝑎𝑙𝑔𝑢𝑛𝑠 𝑑𝑜𝑠 𝑝𝑖𝑒𝑟𝑐𝑖𝑛𝑔𝑠 𝑑𝑖𝑠𝑝𝑜𝑛𝑖𝑣𝑒𝑖𝑠 𝑒𝑚 𝑛𝑜𝑠𝑠𝑜 𝑐𝑎𝑡𝑎𝑙𝑜𝑔𝑜.
+            </ThemedText>
           </View>
         </View>
       }
     >
-
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title" style={styles.titleText}>
-          𝑃𝑟𝑜𝑓𝑖𝑠𝑠𝑖𝑜𝑛𝑎𝑖𝑠
-        </ThemedText>
-      </ThemedView>
-
-      <View style={styles.cardsContainer}>
-
-        <View style={styles.card}>
-          <Image source={require('@/assets/images/jolea.png')} style={styles.cardImage} />
-          <View style={styles.cardBody}>
-            <Text style={styles.cardTitle}>Julia de Assis</Text>
-            <TouchableOpacity style={styles.cardButton} onPress={() => handleNavigate("Julia de Assis")}>
-              <Text style={styles.cardButtonText}>Ver trabalho</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-
-        <View style={styles.card}>
-          <Image source={require('@/assets/images/milena.png')} style={styles.cardImage} />
-          <View style={styles.cardBody}>
-            <Text style={styles.cardTitle}>Milena dos Santos</Text>
-            <TouchableOpacity style={styles.cardButton} onPress={() => handleNavigate("Milena dos Santos")}>
-              <Text style={styles.cardButtonText}>Ver trabalho</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-
-        <View style={styles.card}>
-          <Image source={require('@/assets/images/giovanna.png')} style={styles.cardImage} />
-          <View style={styles.cardBody}>
-            <Text style={styles.cardTitle}>Giovanna Verissimo</Text>
-            <TouchableOpacity style={styles.cardButton} onPress={() => handleNavigate("Giovanna Verissimo")}>
-              <Text style={styles.cardButtonText}>Ver trabalho</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-
-        <View style={styles.card}>
-          <Image source={require('@/assets/images/fernanda.png')} style={styles.cardImage} />
-          <View style={styles.cardBody}>
-            <Text style={styles.cardTitle}>Patrícia Alves</Text>
-            {/* ✅ AQUI FOI ARRUMADO */}
-            <TouchableOpacity style={styles.cardButton} onPress={() => handleNavigate("Patrícia Alves")}>
-              <Text style={styles.cardButtonText}>Ver trabalho</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-
-        <View style={styles.card}>
-          <Image source={require('@/assets/images/yumi.png')} style={styles.cardImage} />
-          <View style={styles.cardBody}>
-            <Text style={styles.cardTitle}>Yumi Lira</Text>
-            <TouchableOpacity style={styles.cardButton} onPress={() => handleNavigate("Yumi Lira")}>
-              <Text style={styles.cardButtonText}>Ver trabalho</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-
-        <View style={styles.card}>
-          <Image source={require('@/assets/images/bianca.png')} style={styles.cardImage} />
-          <View style={styles.cardBody}>
-            <Text style={styles.cardTitle}>Bianca Almeida</Text>
-            <TouchableOpacity style={styles.cardButton} onPress={() => handleNavigate("Bianca Almeida")}>
-              <Text style={styles.cardButtonText}>Ver trabalho</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-
+      <View style={styles.carouselTitleContainer}>
+        <ThemedText style={styles.carouselHeaderTitle}>Piercings microdermals</ThemedText>
+        <ThemedText style={styles.carouselSubtitle}>Feitas por Bianca Almeida e Yumi Lira </ThemedText>
       </View>
+      <Carousel1 />
 
+      <View style={styles.carouselTitleContainer}>
+        <ThemedText style={styles.carouselHeaderTitle}>Piercings Faciais</ThemedText>
+        <ThemedText style={styles.carouselSubtitle}>Feitas por Patricia </ThemedText>
+      </View>
+      <Carousel2 />
+
+      <View style={styles.carouselTitleContainer}>
+        <ThemedText style={styles.carouselHeaderTitle}>Joias disponiveis</ThemedText>
+        <ThemedText style={styles.carouselSubtitle}></ThemedText>
+      </View>
+      <Carousel3 />
+
+      {/* 🔹 Novo carrossel sem título */}
+      <Carousel4 />
     </ParallaxScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 10,
-  },
-  titleText: {
-    fontSize: 25,
-    color: '#FF0090',
-  },
-
-  headerWrapper: {
-    width: '100%',
-    height: 300,
+  headerContainer: {
     position: 'relative',
-  },
-  headerImage: {
     width: '100%',
-    height: '100%',
-    resizeMode: 'cover',
+    height: 250,
   },
-  headerOverlay: {
+  reactLogo: {
+    width: '100%',
+    height: 250,
     position: 'absolute',
-    bottom: 0,
-    right: 0,
-    width: '100%',
-    height: '100%',
-    backgroundColor: 'rgba(0, 0, 0, 0.35)',
-    justifyContent: 'space-around',
-    alignItems: 'flex-end',
-    paddingHorizontal: 20,
-    paddingBottom: 25,
+    top: 0,
+    left: 0,
+  },
+  headerTextContainer: {
+    position: 'absolute',
+    top: 10,
+    left: 10,
+    right: 10,
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+  },
+  piercingTitle: {
+    color: '#FF0090',
+    fontSize: 28,
+    fontWeight: 'bold',
+    textAlign: 'left',
+    marginBottom: 8,
   },
   headerText: {
-    color: '#FFF',
-    fontSize: 16,
-    textAlign: 'right',
-    fontStyle: 'italic',
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 20,
+    textShadowColor: 'rgba(0, 0, 0, 0.7)',
+    textShadowOffset: { width: 1, height: 1 },
+    textShadowRadius: 3,
+    textAlign: 'left',
     lineHeight: 22,
-    width: '80%',
   },
-
-  cardsContainer: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
-    marginTop: 10,
+  highlightText: {
+    color: 'pink',
+    fontWeight: 'bold',
   },
-
-  card: {
-    height: 180,
-    width: (screenWidth / 2) - 22,
-    marginBottom: 15,
-    marginHorizontal: 6,
-    borderRadius: 10,
-    backgroundColor: 'transparent',
-  },
-  cardImage: {
+  carouselTitleContainer: {
     width: '100%',
-    height: 120,
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
-    resizeMode: 'cover',
+    marginBottom: 10,
+    paddingRight: 90,
   },
-  cardBody: {
-    paddingHorizontal: 4,
-    paddingVertical: 2,
+  carouselHeaderTitle: {
+    fontSize: 25,
+    fontFamily: 'italiana',
+    color: '#FF0090',
+    textAlign: 'left',
   },
-  cardTitle: {
-    color: '#fff',
-    fontSize: 16,
-    fontWeight: 'bold',
-  },
-  cardButton: {
-    backgroundColor: '#FF0090',
-    paddingVertical: 5,
-    borderRadius: 10,
-    alignItems: 'center',
-    marginTop: 6,
-  },
-  cardButtonText: {
-    color: '#fff',
+  carouselSubtitle: {
     fontSize: 15,
-    fontWeight: 'bold',
+    fontFamily: 'italiana',
+    color: '#CCC',
+    textAlign: 'left',
+    marginBottom: 10,
+  },
+  carouselContainer: {
+    width: '100%',
+    paddingLeft: 10,
+    marginBottom: 20,
+  },
+  carouselItem: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 25,
+  },
+  carouselImage: {
+    width: 180,
+    height: 150,
+    borderRadius: 10,
   },
 });

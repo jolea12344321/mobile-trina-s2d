@@ -11,13 +11,11 @@ export default function HomeScreen() {
   const router = useRouter();
 
   function handleNavigate(name: string) {
-    // Piercers → página de piercing
     const piercers = ["Patrícia Alves", "Yumi Lira", "Bianca Almeida"];
 
     if (piercers.includes(name)) {
       router.push("/piercing");
     } else {
-      // Tatuadoras → página de tatuagem
       router.push("/tatuagem");
     }
   }
