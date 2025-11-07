@@ -34,11 +34,11 @@ const categoryNames: Record<string, string> = {
 
 const artistNames: Record<string, string> = {
   colored: 'Feitas por Milena Santos',
-  realistic: 'Feitas por Julia de Assis',
+  realistic: 'Feitas por Milena Santos',
   minimalist: 'Feitas por Giovanna Verissimo',
-  tribal: 'Feitas por Milena Santos',
+  tribal: 'Feitas por Giovanna Verissimo',
   blackwork: 'Feitas por Julia de Assis',
-  Bordada: 'Feitas por Giovanna Verissimo',
+  Bordada: 'Feitas por Julia de Assis',
 };
 
 export default function HomeScreen() {

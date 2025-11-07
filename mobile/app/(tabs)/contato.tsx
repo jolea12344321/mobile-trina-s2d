@@ -1,6 +1,6 @@
 import { Image } from 'expo-image';
-import { StyleSheet, TextInput, TouchableOpacity, ScrollView, View, Text } from 'react-native';
 import { useState } from 'react';
+import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 export default function HomeScreen() {
   const [nome, setNome] = useState('');
