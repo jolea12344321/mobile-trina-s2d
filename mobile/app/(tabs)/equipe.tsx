@@ -11,6 +11,7 @@ export default function HomeScreen() {
   const router = useRouter();
 
   function handleNavigate(name: string) {
+    // quem é piercing → vai pra /piercing
     const piercers = ["Patrícia Alves", "Yumi Lira", "Bianca Almeida"];
 
     if (piercers.includes(name)) {
@@ -78,11 +79,12 @@ export default function HomeScreen() {
           </View>
         </View>
 
+        {/* ✅ corrigido: nome passando certinho */}
         <View style={styles.card}>
           <Image source={require('@/assets/images/fernanda.png')} style={styles.cardImage} />
           <View style={styles.cardBody}>
             <Text style={styles.cardTitle}>Patrícia Alves</Text>
-            <TouchableOpacity style={styles.cardButton} onPress={() => handleNavigate("Patricia ")}>
+            <TouchableOpacity style={styles.cardButton} onPress={() => handleNavigate("Patrícia Alves")}>
               <Text style={styles.cardButtonText}>Ver trabalho</Text>
             </TouchableOpacity>
           </View>
