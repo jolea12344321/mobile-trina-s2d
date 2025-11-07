@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { useLocalSearchParams } from 'expo-router';  // ►►► ALTERAÇÃO ►►►
 
 type TattooItem = {
   id: string;
@@ -21,16 +22,14 @@ const categories = [
 
 const apiBase = 'http://localhost:3000';
 
-
 const categoryNames: Record<string, string> = {
   colored: 'Coloridas',
   realistic: 'Realistas',
-  minimalist: 'Minimsalistas',
+  minimalist: 'Minimaisalistas',
   tribal: 'Tribais',
   blackwork: 'Blackwork',
   Bordada: 'Bordadas',
 };
-
 
 const artistNames: Record<string, string> = {
   colored: 'Feitas por Milena Santos',
@@ -45,6 +44,9 @@ export default function HomeScreen() {
   const [tattooData, setTattooData] = useState<TattooData>({});
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  const { artist } = useLocalSearchParams();  // ►►► ALTERAÇÃO ►►►
+  const scrollRef = useRef<ScrollView>(null);  // ►►► ALTERAÇÃO ►►►
 
   useEffect(() => {
     setLoading(true);
@@ -74,6 +76,25 @@ export default function HomeScreen() {
       });
   }, []);
 
+  useEffect(() => {
+    if (artist) {
+      // Aguarda para renderização
+      setTimeout(() => {
+        // Exemplo de rolagem baseada no nome do artista
+        if (artist === 'Julia de Assis') {
+          scrollRef.current?.scrollTo({ y: 300, animated: true });
+        }
+        if (artist === 'Milena dos Santos') {
+          scrollRef.current?.scrollTo({ y: 600, animated: true });
+        }
+        if (artist === 'Giovanna Verissimo') {
+          scrollRef.current?.scrollTo({ y: 900, animated: true });
+        }
+      }, 300);
+    }
+  }, [artist]);
+  // ◄◄◄ FIM DAS ALTERAÇÕES ◄◄◄
+
   if (loading) {
     return (
       <View style={styles.container}>
@@ -91,7 +112,7 @@ export default function HomeScreen() {
   }
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
+    <ScrollView ref={scrollRef} contentContainerStyle={styles.container}> {/* ►►► ALTERAÇÃO ►►► */}
       <View style={styles.headerContainer}>
         <Image
           source={require('@/assets/images/tattoo.png')}
@@ -101,23 +122,19 @@ export default function HomeScreen() {
         <View style={styles.headerTextContainer}>
           <Text style={styles.piercingTitle}>𝑻𝒂𝒕𝒕𝒐𝒐</Text>
           <Text style={styles.headerText}>
-            𝖭𝗈𝗌𝗌𝗈𝗌 𝗉𝗋𝗈𝖿𝗂𝗌𝗌𝗂𝗈𝗇𝖺𝗂𝗌 𝗌𝖺̃𝗈 𝖺𝗅𝗍𝖺𝗆𝖾𝗇𝗍𝖾 𝗊𝗎𝖺𝗅𝗂𝖿𝗂𝖼𝖺𝖽𝗈𝗌, 𝖼𝗎𝗂𝖽𝖺𝗆 𝖽𝗈 𝗌𝖾𝗎 𝖻𝖾𝗆 𝖾𝗌𝗍𝖺𝗋 𝖽𝗎𝗋𝖺𝗇𝗍𝖾 𝖺 𝗌𝗎𝖺 𝗌𝖾𝖼̧𝖺̃𝗈, 𝖾 𝖼𝗎𝗂𝖽𝖺𝗆 𝗉𝖺𝗋𝖺 𝗊𝗎𝖾 𝗏𝗈𝖼𝖾̂ 𝖼𝗈𝗇𝗌𝗂𝗀𝖺 𝗍𝖾𝗋 𝗎𝗆 𝖾𝖿𝖾𝗂𝗍𝗈 𝖽𝖾𝗌𝖾𝗃𝖺𝖽𝗈.
+            𝖭𝗈𝗌𝗌𝗈𝗌 𝗉𝗋𝗈𝖿𝗂𝗌𝖲𝗂𝗈𝗇𝖺𝗂𝖲 𝗌𝖺̃𝗈 𝖺𝗅𝗍𝖺𝗆𝖾𝗇𝗍𝖾 𝗊𝗎𝖺𝗅𝗂𝖿𝗂𝖼𝖺𝗉𝗈𝗌, 𝖼𝗎𝗂𝖽𝖺𝗆 𝖽𝗈 𝗌𝖾𝗎 𝖻𝖾𝗆 𝖾𝗌𝗍𝖺𝗋 𝖽𝗎𝗋𝖺𝗇𝗍𝖾 𝖺 𝗌𝗎𝖺 𝗌𝖾𝖼̧𝖺̃𝗈, 𝖾  𝖼𝗎𝗂𝖽𝖺𝗆 𝗉𝖺𝗋𝖺 𝗊𝗎𝖾 𝗏𝗈𝖼𝖾̂ 𝖼𝗈𝗇𝗌𝗂𝗀𝖺 𝗍𝖾𝗋 𝗎𝗆 𝖾𝖿𝖾𝗂𝗍𝗈 𝖽𝖾𝗌𝖾𝗃𝖺𝖽𝗈.
           </Text>
         </View>
       </View>
 
       {Object.keys(tattooData).map((category) => (
         <View style={styles.categoryContainer} key={category}>
-          {/* ✅ Nome legível do carrossel */}
           <Text style={styles.sectionTitle}>
             {categoryNames[category] || category}
           </Text>
-
-          {/* ✅ Nome do artista */}
           <Text style={styles.sectionSubtitle}>
             {artistNames[category] || 'Feitas por nossa equipe'}
           </Text>
-
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
             {tattooData[category].map(({ id, url }) => (
               <View key={id} style={styles.imageContainer}>

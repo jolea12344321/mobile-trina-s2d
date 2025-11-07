@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Image } from 'expo-image';
-import { StyleSheet, View, FlatList } from 'react-native';
+import { StyleSheet, View, FlatList, ScrollView } from 'react-native';
+import { useLocalSearchParams } from 'expo-router';  // ►►► ALTERAÇÃO ►►►
 import ParallaxScrollView from '@/components/parallax-scroll-view';
 import { ThemedText } from '@/components/themed-text';
 
@@ -90,7 +91,7 @@ function Carousel3() {
   );
 }
 
-// 🔹 Novo carrossel (sem título)
+// Novo carrossel sem título
 function Carousel4() {
   return (
     <View style={styles.carouselContainer}>
@@ -110,6 +111,28 @@ function Carousel4() {
 }
 
 export default function HomeScreen() {
+  const { artist } = useLocalSearchParams(); // ►►► ALTERAÇÃO ►►►
+  const scrollRef = useRef<ScrollView>(null);     // ►►► ALTERAÇÃO ►►►
+
+  useEffect(() => {
+    if (artist) {
+      // Aguardar um pouco para que o layout já tenha sido renderizado antes de rolar
+      setTimeout(() => {
+        // Exemplo de rolagem baseada no nome do artista
+        if (artist === 'Patrícia Alves') {
+          scrollRef.current?.scrollTo({ y: 400, animated: true });
+        }
+        if (artist === 'Yumi Lira') {
+          scrollRef.current?.scrollTo({ y: 600, animated: true });
+        }
+        if (artist === 'Bianca Almeida') {
+          scrollRef.current?.scrollTo({ y: 800, animated: true });
+        }
+      }, 300);
+    }
+  }, [artist]);
+  // ◄◄◄ FIM DAS ALTERAÇÕES ◄◄◄
+
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#000000', dark: '#000' }}
@@ -133,26 +156,27 @@ export default function HomeScreen() {
         </View>
       }
     >
-      <View style={styles.carouselTitleContainer}>
-        <ThemedText style={styles.carouselHeaderTitle}>Piercings microdermals</ThemedText>
-        <ThemedText style={styles.carouselSubtitle}>Feitas por Bianca Almeida e Yumi Lira </ThemedText>
-      </View>
-      <Carousel1 />
+      <ScrollView ref={scrollRef} contentContainerStyle={{ paddingBottom: 50 }}> {/* ►►► ALTERAÇÃO ►►► */}
+        <View style={styles.carouselTitleContainer}>
+          <ThemedText style={styles.carouselHeaderTitle}>Piercings microdermals</ThemedText>
+          <ThemedText style={styles.carouselSubtitle}>Feitas por Bianca Almeida e Yumi Lira </ThemedText>
+        </View>
+        <Carousel1 />
 
-      <View style={styles.carouselTitleContainer}>
-        <ThemedText style={styles.carouselHeaderTitle}>Piercings Faciais</ThemedText>
-        <ThemedText style={styles.carouselSubtitle}>Feitas por Patricia </ThemedText>
-      </View>
-      <Carousel2 />
+        <View style={styles.carouselTitleContainer}>
+          <ThemedText style={styles.carouselHeaderTitle}>Piercings Faciais</ThemedText>
+          <ThemedText style={styles.carouselSubtitle}>Feitas por Patricia </ThemedText>
+        </View>
+        <Carousel2 />
 
-      <View style={styles.carouselTitleContainer}>
-        <ThemedText style={styles.carouselHeaderTitle}>Joias disponiveis</ThemedText>
-        <ThemedText style={styles.carouselSubtitle}></ThemedText>
-      </View>
-      <Carousel3 />
+        <View style={styles.carouselTitleContainer}>
+          <ThemedText style={styles.carouselHeaderTitle}>Joias disponiveis</ThemedText>
+          <ThemedText style={styles.carouselSubtitle}></ThemedText>
+        </View>
+        <Carousel3 />
 
-      {/* 🔹 Novo carrossel sem título */}
-      <Carousel4 />
+        <Carousel4 />
+      </ScrollView>
     </ParallaxScrollView>
   );
 }

@@ -10,16 +10,17 @@ const screenWidth = Dimensions.get('window').width;
 export default function HomeScreen() {
   const router = useRouter();
 
+  // ================= INÍCIO DA ALTERAÇÃO =================
   function handleNavigate(name: string) {
-    // quem é piercing → vai pra /piercing
     const piercers = ["Patrícia Alves", "Yumi Lira", "Bianca Almeida"];
 
     if (piercers.includes(name)) {
-      router.push("/piercing");
+      router.push(`/piercing?artist=${encodeURIComponent(name)}`);
     } else {
-      router.push("/tatuagem");
+      router.push(`/tatuagem?artist=${encodeURIComponent(name)}`);
     }
   }
+  // ================= FIM DA ALTERAÇÃO =================
 
   return (
     <ParallaxScrollView
@@ -79,7 +80,6 @@ export default function HomeScreen() {
           </View>
         </View>
 
-        {/* ✅ corrigido: nome passando certinho */}
         <View style={styles.card}>
           <Image source={require('@/assets/images/fernanda.png')} style={styles.cardImage} />
           <View style={styles.cardBody}>
@@ -127,7 +127,6 @@ const styles = StyleSheet.create({
     fontSize: 25,
     color: '#FF0090',
   },
-
   headerWrapper: {
     width: '100%',
     height: 300,
@@ -158,14 +157,12 @@ const styles = StyleSheet.create({
     lineHeight: 22,
     width: '80%',
   },
-
   cardsContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center',
     marginTop: 10,
   },
-
   card: {
     height: 180,
     width: (screenWidth / 2) - 22,
