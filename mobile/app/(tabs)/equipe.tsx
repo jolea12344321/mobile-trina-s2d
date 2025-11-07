@@ -3,10 +3,23 @@ import { StyleSheet, View, Text, TouchableOpacity, Dimensions } from 'react-nati
 import ParallaxScrollView from '@/components/parallax-scroll-view';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
+import { useRouter } from 'expo-router';
 
 const screenWidth = Dimensions.get('window').width;
 
 export default function HomeScreen() {
+  const router = useRouter();
+
+  function handleNavigate(name: string) {
+    const piercers = ["Patrícia Alves", "Yumi Lira", "Bianca Almeida"];
+
+    if (piercers.includes(name)) {
+      router.push("/piercing");
+    } else {
+      router.push("/tatuagem");
+    }
+  }
+
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#000', dark: '#000' }}
@@ -19,7 +32,7 @@ export default function HomeScreen() {
           <View style={styles.headerOverlay}>
             <Text style={styles.headerText}>
               Com mais de 30 anos de mercado, a Trina's Studio é composto por uma
-              equipe de 12 tatuadores e body piercer, especialistas em diferentes
+              equipe de 6 tatuadores e body piercer, especialistas em diferentes
               tipos de tatuagem e piercing.
             </Text>
           </View>
@@ -39,7 +52,7 @@ export default function HomeScreen() {
           <Image source={require('@/assets/images/jolea.png')} style={styles.cardImage} />
           <View style={styles.cardBody}>
             <Text style={styles.cardTitle}>Julia de Assis</Text>
-            <TouchableOpacity style={styles.cardButton}>
+            <TouchableOpacity style={styles.cardButton} onPress={() => handleNavigate("Julia de Assis")}>
               <Text style={styles.cardButtonText}>Ver trabalho</Text>
             </TouchableOpacity>
           </View>
@@ -49,7 +62,7 @@ export default function HomeScreen() {
           <Image source={require('@/assets/images/milena.png')} style={styles.cardImage} />
           <View style={styles.cardBody}>
             <Text style={styles.cardTitle}>Milena dos Santos</Text>
-            <TouchableOpacity style={styles.cardButton}>
+            <TouchableOpacity style={styles.cardButton} onPress={() => handleNavigate("Milena dos Santos")}>
               <Text style={styles.cardButtonText}>Ver trabalho</Text>
             </TouchableOpacity>
           </View>
@@ -59,7 +72,7 @@ export default function HomeScreen() {
           <Image source={require('@/assets/images/giovanna.png')} style={styles.cardImage} />
           <View style={styles.cardBody}>
             <Text style={styles.cardTitle}>Giovanna Verissimo</Text>
-            <TouchableOpacity style={styles.cardButton}>
+            <TouchableOpacity style={styles.cardButton} onPress={() => handleNavigate("Giovanna Verissimo")}>
               <Text style={styles.cardButtonText}>Ver trabalho</Text>
             </TouchableOpacity>
           </View>
@@ -69,7 +82,7 @@ export default function HomeScreen() {
           <Image source={require('@/assets/images/fernanda.png')} style={styles.cardImage} />
           <View style={styles.cardBody}>
             <Text style={styles.cardTitle}>Patrícia Alves</Text>
-            <TouchableOpacity style={styles.cardButton}>
+            <TouchableOpacity style={styles.cardButton} onPress={() => handleNavigate("Patricia ")}>
               <Text style={styles.cardButtonText}>Ver trabalho</Text>
             </TouchableOpacity>
           </View>
@@ -79,7 +92,7 @@ export default function HomeScreen() {
           <Image source={require('@/assets/images/yumi.png')} style={styles.cardImage} />
           <View style={styles.cardBody}>
             <Text style={styles.cardTitle}>Yumi Lira</Text>
-            <TouchableOpacity style={styles.cardButton}>
+            <TouchableOpacity style={styles.cardButton} onPress={() => handleNavigate("Yumi Lira")}>
               <Text style={styles.cardButtonText}>Ver trabalho</Text>
             </TouchableOpacity>
           </View>
@@ -89,7 +102,7 @@ export default function HomeScreen() {
           <Image source={require('@/assets/images/bianca.png')} style={styles.cardImage} />
           <View style={styles.cardBody}>
             <Text style={styles.cardTitle}>Bianca Almeida</Text>
-            <TouchableOpacity style={styles.cardButton}>
+            <TouchableOpacity style={styles.cardButton} onPress={() => handleNavigate("Bianca Almeida")}>
               <Text style={styles.cardButtonText}>Ver trabalho</Text>
             </TouchableOpacity>
           </View>
@@ -130,8 +143,8 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     backgroundColor: 'rgba(0, 0, 0, 0.35)',
-    justifyContent: 'space-around', 
-    alignItems: 'flex-end', 
+    justifyContent: 'space-around',
+    alignItems: 'flex-end',
     paddingHorizontal: 20,
     paddingBottom: 25,
   },

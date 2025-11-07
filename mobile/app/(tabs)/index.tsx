@@ -27,7 +27,7 @@ export default function HomeScreen() {
       </ThemedView>
 
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title" style={{ fontSize: 36, color:'#FF0090', }}>       𝑒𝓈𝓉𝒾𝓁𝑜 𝓃𝒶 𝒶𝓁𝓂𝒶.</ThemedText>
+        <ThemedText type="title" style={{ fontSize: 35, color:'#FF0090', }}>       𝑒𝓈𝓉𝒾𝓁𝑜 𝓃𝒶 𝒶𝓁𝓂𝒶.</ThemedText>
       </ThemedView>
 
       <Image
