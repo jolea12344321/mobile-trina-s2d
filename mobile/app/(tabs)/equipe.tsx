@@ -10,17 +10,16 @@ const screenWidth = Dimensions.get('window').width;
 export default function HomeScreen() {
   const router = useRouter();
 
-  // ================= INÍCIO DA ALTERAÇÃO =================
   function handleNavigate(name: string) {
     const piercers = ["Patrícia Alves", "Yumi Lira", "Bianca Almeida"];
+    const tattooArtists = ["Julia de Assis", "Milena dos Santos", "Giovanna Verissimo"];
 
     if (piercers.includes(name)) {
       router.push(`/piercing?artist=${encodeURIComponent(name)}`);
-    } else {
+    } else if (tattooArtists.includes(name)) {
       router.push(`/tatuagem?artist=${encodeURIComponent(name)}`);
     }
   }
-  // ================= FIM DA ALTERAÇÃO =================
 
   return (
     <ParallaxScrollView
@@ -33,8 +32,8 @@ export default function HomeScreen() {
           />
           <View style={styles.headerOverlay}>
             <Text style={styles.headerText}>
-              Com mais de 30 anos de mercado, a Trina's Studio é composto por uma
-              equipe de 6 tatuadores e body piercer, especialistas em diferentes
+              Com mais de 30 anos de mercado, a Trina's Studio é composta por uma
+              equipe de tatuadores e body piercers, especialistas em diferentes
               tipos de tatuagem e piercing.
             </Text>
           </View>
@@ -49,69 +48,28 @@ export default function HomeScreen() {
       </ThemedView>
 
       <View style={styles.cardsContainer}>
-
-        <View style={styles.card}>
-          <Image source={require('@/assets/images/jolea.png')} style={styles.cardImage} />
-          <View style={styles.cardBody}>
-            <Text style={styles.cardTitle}>Julia de Assis</Text>
-            <TouchableOpacity style={styles.cardButton} onPress={() => handleNavigate("Julia de Assis")}>
-              <Text style={styles.cardButtonText}>Ver trabalho</Text>
-            </TouchableOpacity>
+        {[
+          { name: 'Milena dos Santos', img: require('@/assets/images/milena.png') },
+          { name: 'Julia de Assis', img: require('@/assets/images/jolea.png') },
+          { name: 'Giovanna Verissimo', img: require('@/assets/images/giovanna.png') },
+          { name: 'Patrícia Alves', img: require('@/assets/images/fernanda.png') },
+          { name: 'Yumi Lira', img: require('@/assets/images/yumi.png') },
+          { name: 'Bianca Almeida', img: require('@/assets/images/bianca.png') },
+        ].map((artist) => (
+          <View key={artist.name} style={styles.card}>
+            <Image source={artist.img} style={styles.cardImage} />
+            <View style={styles.cardBody}>
+              <Text style={styles.cardTitle}>{artist.name}</Text>
+              <TouchableOpacity
+                style={styles.cardButton}
+                onPress={() => handleNavigate(artist.name)}
+              >
+                <Text style={styles.cardButtonText}>Ver trabalho</Text>
+              </TouchableOpacity>
+            </View>
           </View>
-        </View>
-
-        <View style={styles.card}>
-          <Image source={require('@/assets/images/milena.png')} style={styles.cardImage} />
-          <View style={styles.cardBody}>
-            <Text style={styles.cardTitle}>Milena dos Santos</Text>
-            <TouchableOpacity style={styles.cardButton} onPress={() => handleNavigate("Milena dos Santos")}>
-              <Text style={styles.cardButtonText}>Ver trabalho</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-
-        <View style={styles.card}>
-          <Image source={require('@/assets/images/giovanna.png')} style={styles.cardImage} />
-          <View style={styles.cardBody}>
-            <Text style={styles.cardTitle}>Giovanna Verissimo</Text>
-            <TouchableOpacity style={styles.cardButton} onPress={() => handleNavigate("Giovanna Verissimo")}>
-              <Text style={styles.cardButtonText}>Ver trabalho</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-
-        <View style={styles.card}>
-          <Image source={require('@/assets/images/fernanda.png')} style={styles.cardImage} />
-          <View style={styles.cardBody}>
-            <Text style={styles.cardTitle}>Patrícia Alves</Text>
-            <TouchableOpacity style={styles.cardButton} onPress={() => handleNavigate("Patrícia Alves")}>
-              <Text style={styles.cardButtonText}>Ver trabalho</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-
-        <View style={styles.card}>
-          <Image source={require('@/assets/images/yumi.png')} style={styles.cardImage} />
-          <View style={styles.cardBody}>
-            <Text style={styles.cardTitle}>Yumi Lira</Text>
-            <TouchableOpacity style={styles.cardButton} onPress={() => handleNavigate("Yumi Lira")}>
-              <Text style={styles.cardButtonText}>Ver trabalho</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-
-        <View style={styles.card}>
-          <Image source={require('@/assets/images/bianca.png')} style={styles.cardImage} />
-          <View style={styles.cardBody}>
-            <Text style={styles.cardTitle}>Bianca Almeida</Text>
-            <TouchableOpacity style={styles.cardButton} onPress={() => handleNavigate("Bianca Almeida")}>
-              <Text style={styles.cardButtonText}>Ver trabalho</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-
+        ))}
       </View>
-
     </ParallaxScrollView>
   );
 }
